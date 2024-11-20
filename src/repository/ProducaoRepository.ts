@@ -2,8 +2,7 @@ import { Client } from "pg";
 import Producao from "src/entity/Producao";
 
 export default class ProducaoRepository {
-    private connection: Client
-
+    private connection: Client;
     constructor() {
         if(!this.connection){
             this.connection = new Client({
