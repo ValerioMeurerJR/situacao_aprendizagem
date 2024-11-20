@@ -16,7 +16,9 @@ document.getElementById("cadastrar").addEventListener("click", async (event: Mou
         kitpneu: kitpneu.value
     }
     const result = await (window as any).bancoAPI.createProducao(carro);
-    console.log(result)
+    renavam.value = '';
+    modelo.value = '';
+    preencheComboBox();
 })
 
 async function preencheComboBox() {

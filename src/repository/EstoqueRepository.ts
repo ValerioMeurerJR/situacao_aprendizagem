@@ -39,7 +39,7 @@ export default class EstoqueRepository {
     async findAll(){
         try {
             this.connection.connect();
-            const sql = "SELECT * FROM estoque";
+            const sql = "SELECT * FROM estoque WHERE quantidade != 0";
             const result = await this.connection.query(sql);
             return result.rows;
         } catch (error) {
