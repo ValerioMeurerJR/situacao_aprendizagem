@@ -4,14 +4,23 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: ivory;
+  }
+
 main {
     display: flex;
+    border-radius: 15px;
     flex-direction: column;
     gap: 16px;
     padding: 40px;
     width: 80%;
     margin: 125px auto;
-    background-color: #ffffff4f;
+    background-color: cadetblue;
+}
+main h1 {
+   color: black;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .grupo-campos {
@@ -46,3 +55,4 @@ main {
 .grupo-campos button:hover {
     background-color: #999;
 }
+
