@@ -18,5 +18,10 @@ export default class ProducaoController {
             new EstoqueRepository().menos(carcaca)
             new EstoqueRepository().menos(kitpneu)
           })
+          ipcMain.handle('findUltimosCadastrado', async () => {
+            return await new ProducaoRepository().findUltimosCadastrado();
+          })
     }
+
+    
 }
