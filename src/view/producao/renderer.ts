@@ -50,8 +50,8 @@ async function preencheComboBox() {
 async function listaUltimosCadastrado() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
     console.log(ultimos)
-    const divLista = document.getElementById("lista");    
-    divLista.innerHTML = `
+    const sideLista = document.getElementById("lista");    
+    sideLista.innerHTML = `
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
