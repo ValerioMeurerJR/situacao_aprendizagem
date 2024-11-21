@@ -1,5 +1,5 @@
 import "./login.css"
-import Producao from "../../entity/Producao";
+
 import DataTable from "datatables.net-dt";
 
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
@@ -51,8 +51,10 @@ async function preencheComboBox() {
 async function listaUltimosCadastrado() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
     console.log(ultimos)
-    const divLista = document.getElementById("lista");    
-    divLista.innerHTML = `
+
+    const sideLista = document.getElementById("lista");    
+    sideLista.innerHTML = `
+
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -98,36 +100,3 @@ window.onload = () => {
     preencheComboBox();
     listaUltimosCadastrado();
 };
-
-
-
-// <table>
-//         <thead>
-//             <tr>
-//                 <th>ID</th>
-//                 <th>Nome</th>
-//                 <th>Email</th>
-//                 <th>Data de Registro</th>
-//             </tr>
-//         </thead>
-//         <tbody>
-//             <tr>
-//                 <td>1</td>
-//                 <td>João Silva</td>
-//                 <td>joao.silva@example.com</td>
-//                 <td>2024-11-19</td>
-//             </tr>
-//             <tr>
-//                 <td>2</td>
-//                 <td>Maria Oliveira</td>
-//                 <td>maria.oliveira@example.com</td>
-//                 <td>2024-11-18</td>
-//             </tr>
-//             <tr>
-//                 <td>3</td>
-//                 <td>Pedro Santos</td>
-//                 <td>pedro.santos@example.com</td>
-//                 <td>2024-11-17</td>
-//             </tr>
-//         </tbody>
-//     </table>
