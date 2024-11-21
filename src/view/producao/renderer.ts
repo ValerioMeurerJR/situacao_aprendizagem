@@ -84,9 +84,6 @@ async function listaUltimosCadastrado() {
         data: formattedData,
         'order': [[1, 'asc']],
         "lengthMenu": [[6, 10, 20, -1], [6, 10, 20, "All"]],
-        language: {
-            url: 'producao/ptbr.json'
-        },
         columns: [
             { title: "Renavam" },
             { title: "Modelo" },
