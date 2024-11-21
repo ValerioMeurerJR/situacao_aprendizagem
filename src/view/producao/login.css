@@ -8,31 +8,109 @@ body {
     background-color: ivory;
   }
 
-main {
+  header {
+    background-color:cadetblue;
+    margin: 30px auto 10px;
+    width: 80vw;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: cursive;
+    text-align: center;
+  }
+
+  main {
+    height: 500px;
+    width: 80vw;
+    margin: 20px auto 0;
     display: flex;
-    border-radius: 15px;
-    flex-direction: column;
+    flex-direction: row;
+    column-gap: 20px;
     gap: 16px;
-    padding: 40px;
-    width: 80%;
-    margin: 125px auto;
-    background-color: cadetblue;
-}
-main h1 {
-   color: black;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+    border-radius: 15px;
+    margin: 90px auto;
+ 
+  }
 
-.grupo-campos {
+  form {
+    background-color: #ffffff;
+    width: 500px;
+    height: fit-content;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
+  }
+
+  aside {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  form h2 {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: cursive;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  form .input {
     display: flex;
     flex-direction: column;
-}
+    row-gap: 3px;
+    margin-bottom: 20px;
+  }
 
-.input, .select {
+  form .input label {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  form .input input {
+    height: 48px;
+    font-size: 14px;
+    color: #666666;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #999999;
+    background-color: #f0f0f0;
+    padding: 0 10px;
+  }
+
+
+form .select {
     display: flex;
     flex-direction: column;
+    row-gap: 3px;
+    margin-bottom: 20px;
 }
 
+
+form .select label {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form .select select{
+    height: 48px;
+    font-size: 14px;
+    color: #666666;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #999999;
+    background-color: #f0f0f0;
+    padding: 0 10px;
+}
 .input input,
 .select select {
     padding: 8px 16px; 
@@ -41,18 +119,21 @@ main h1 {
     border:  1px solid #999;
 }
 
-.grupo-campos button {
-    padding: 14px; 
-    border-radius: 10px;
-    font-size: 16px;
-    border: none;    
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.grupo-campos button:hover {
+form button {
+    width: 100%;
     background-color: #999;
-}
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+
+form button:hover {
+    background-color: darkturquoise;
+  }
+
 

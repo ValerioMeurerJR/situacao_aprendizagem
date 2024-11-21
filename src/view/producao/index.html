@@ -5,45 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producao</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 </head>
 
 <body>
+    <header>
+        <h1>sistema de cadastrado operacional</h1>
+    </header>
+
     <main>
-        <div>
-            <h1>Cadastro de produtividade</h1>
-            <div class="grupo-campos">
+        <form>
+            <h2>Cadastro de produtividade</h2>
+
+            
                 <div class="input">
                     <label for="renavam">Renavam</label>
                     <input type="text" id="renavam">
-
                 </div>
+
                 <div class="input">
                     <label for="modelo">Modelo</label>
                     <input type="text" id="modelo">
-
                 </div>
+
                 <div class="select">
                     <label for="motor">Motor</label>
                     <select id="motor">
                     </select>
                 </div>
+
                 <div class="select">
                     <label for="kitpneu">Kit Pneu</label>
                     <select id="kitpneu">
                     </select>
                 </div>
+
                 <div class="select">
                     <label for="carcaca">Carcaça</label>
                     <select id="carcaca">
                     </select>
                 </div>
+
                 <button id="cadastrar">Cadastrar</button>
-            </div>
-        </div>
-        <div>
+            
+
+        </form>
+
+        <aside class="lista" id="lista">
             <h2>Ultimos produto cadastrado</h2>
-            <div class="lista" id="lista"></div>
-        </div>
+        </aside>
     </main>
 </body>
 
