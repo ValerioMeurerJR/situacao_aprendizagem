@@ -33,6 +33,14 @@ const config: ForgeConfig = {
             },
           },
           {
+            html: './src/view/estoque/index.html',
+            js: './src/view/estoque/renderer.ts',
+            name: 'estoque',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
+          {
             html: './src/view/producao/index.html',
             js: './src/view/producao/renderer.ts',
             name: 'producao',
