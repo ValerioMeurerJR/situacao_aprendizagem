@@ -5,11 +5,12 @@
 }
 
 body {
-    background-color: ivory;
+    background: url(../../assets/logo_01.png) ;
+    background-color: #333333;
   }
 
   header {
-    background-color:cadetblue;
+    background-color:#ffffff;
     margin: 30px auto 10px;
     width: 80vw;
     padding: 20px;
@@ -47,10 +48,26 @@ body {
 
   aside {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    display:flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 16px;
   }
+
+  aside h2 {
+   
+    font-size: 24px;
+    font-weight: 700;
+    font-family: cursive;
+    text-align: center;
+  }
+
+  aside .lista {
+   text-align: center;
+   margin-left: 16px;
+   margin-right: 16px; 
+  }
+
 
   form h2 {
     font-size: 25px;
@@ -111,13 +128,6 @@ form .select select{
     background-color: #f0f0f0;
     padding: 0 10px;
 }
-.input input,
-.select select {
-    padding: 8px 16px; 
-    border-radius: 10px;
-    font-size: 16px;
-    border:  1px solid #999;
-}
 
 form button {
     width: 100%;
@@ -137,3 +147,10 @@ form button:hover {
   }
 
 
+/* .input input,
+.select select {
+    padding: 8px 16px; 
+    border-radius: 10px;
+    font-size: 16px;
+    border:  1px solid #999;
+} */
