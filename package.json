@@ -46,7 +46,6 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "datatables.net-dt": "^2.1.8",
     "electron-squirrel-startup": "^1.0.1",
     "pg": "^8.13.1",
     "sweetalert2": "^11.14.5",

@@ -1,5 +1,4 @@
 import "./login.css"
-
 import DataTable from "datatables.net-dt";
 
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
@@ -19,7 +18,7 @@ document.getElementById("cadastrar").addEventListener("click", async (event: Mou
     const result = await (window as any).bancoAPI.createProducao(carro);
     renavam.value = '';
     modelo.value = '';
-    preencheComboBox();
+    render();
 })
 
 async function preencheComboBox() {
@@ -51,10 +50,9 @@ async function preencheComboBox() {
 async function listaUltimosCadastrado() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
     console.log(ultimos)
-
-    const sideLista = document.getElementById("lista");    
+    const sideLista = document.getElementById("lista");   
+    sideLista.innerHTML = ""; 
     sideLista.innerHTML = `
-
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -84,6 +82,11 @@ async function listaUltimosCadastrado() {
 
     new DataTable('#example', {
         data: formattedData,
+        'order': [[1, 'asc']],
+        "lengthMenu": [[6, 10, 20, -1], [6, 10, 20, "All"]],
+        language: {
+            url: 'producao/ptbr.json'
+        },
         columns: [
             { title: "Renavam" },
             { title: "Modelo" },
@@ -95,6 +98,12 @@ async function listaUltimosCadastrado() {
         ]
     });
 
+}
+
+function render(){
+    console.log("Atualizar")
+    listaUltimosCadastrado();    
+    preencheComboBox();
 }
 window.onload = () => {
     preencheComboBox();

@@ -6,8 +6,7 @@ contextBridge.exposeInMainWorld('bancoAPI', {
     findAllProducao: async () => await ipcRenderer.invoke('findAllProducao'),
     estoquefindByTipo: async (tipo: string) => await ipcRenderer.invoke('estoquefindByTipo', tipo),
     findAllEstoque: async () => await ipcRenderer.invoke('findAllEstoque'),
- Valerio
-    findUltimosCadastrado: async () => await ipcRenderer.invoke('findUltimosCadastrado'),
+    findUltimosCadastrado: async () => await ipcRenderer.invoke('findUltimosCadastrado')
 })
 
 contextBridge.exposeInMainWorld("navigateAPI", {
