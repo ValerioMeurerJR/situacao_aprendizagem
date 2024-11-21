@@ -1,4 +1,5 @@
 import "./login.css"
+
 import DataTable from "datatables.net-dt";
 
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
@@ -50,8 +51,10 @@ async function preencheComboBox() {
 async function listaUltimosCadastrado() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
     console.log(ultimos)
+
     const sideLista = document.getElementById("lista");    
     sideLista.innerHTML = `
+
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
