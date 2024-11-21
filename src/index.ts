@@ -6,6 +6,7 @@ import ProducaoController from './controller/ProducaoController';
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
 declare const LOGIN_WEBPACK_ENTRY: string;
 declare const PRODUCAO_WEBPACK_ENTRY: string;
+declare const ESTOQUE_WEBPACK_ENTRY: string;
 
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -21,7 +22,7 @@ const createWindow = (): void => {
     },
   });
 
-  mainWindow.loadURL(PRODUCAO_WEBPACK_ENTRY);
+  mainWindow.loadURL(ESTOQUE_WEBPACK_ENTRY);
 
   // mainWindow.webContents.openDevTools();
 };

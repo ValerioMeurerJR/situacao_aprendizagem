@@ -69,8 +69,7 @@ export default class ProducaoRepository {
                 INNER JOIN estoque m ON p.motor_id = m.id
                 INNER JOIN estoque c ON p.carcaca_id = c.id
                 INNER JOIN estoque k ON p.kitPneu_id = k.id
-                ORDER BY data_fabricacao DESC 
-                LIMIT 10`;
+                ORDER BY data_fabricacao DESC`;
             const result = await this.connection.query(sql);
             return result.rows;
         } catch (error) {
