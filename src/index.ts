@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import { hash, compare } from 'bcrypt';
 import EstoqueController from './controller/EstoqueController';
 import ProducaoController from './controller/ProducaoController';
+import EntradaProdutoController from './controller/EntradaProdutoController';
 
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
 declare const LOGIN_WEBPACK_ENTRY: string;
@@ -31,6 +32,7 @@ app.on('ready', () => {
   createWindow();
   new EstoqueController();
   new ProducaoController();
+  new EntradaProdutoController();
 });
 
 app.on('window-all-closed', () => {

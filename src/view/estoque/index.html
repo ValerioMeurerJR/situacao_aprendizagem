@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estoque</title>
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div>
+        <h2>Cadastro de produtos</h2>
         <div>
             <label for="nome">Nome</label>
             <input type="text" id="nome">
@@ -29,8 +31,11 @@
                 <option>Pneu</option>
             </select>
         </div>
-        <button id="cadastrar">Cadastrar</button>
+        <button id="cadastrar" >Cadastrar</button>
     </div>
-    <div></div>
+    <aside>
+        <h2>Lista de Produtos</h2>
+        <div id="lista"></div>
+    </aside>
 </body>
 </html>

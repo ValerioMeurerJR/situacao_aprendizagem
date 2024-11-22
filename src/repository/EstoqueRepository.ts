@@ -51,6 +51,21 @@ export default class EstoqueRepository {
         }
     }
 
+    async findAlll(){
+        try {
+            this.connection.connect();
+            const sql = "SELECT * FROM estoque WHERE quantidade != 0";
+            const result = await this.connection.query(sql);
+            return result.rows;
+        } catch (error) {
+            console.log(error)
+            return [];
+        } finally{
+            this.connection.end();
+        this.connection = null;
+        }
+    }
+
     async findByTipo(tipo: string){
         try {
             this.connection.connect();
@@ -70,6 +85,18 @@ export default class EstoqueRepository {
             this.connection.connect();
             const sql = "UPDATE estoque SET quantidade = quantidade - 1  WHERE id = $1";
             await this.connection.query(sql, [produto])
+        } catch (error) {
+            console.log(error)
+        } finally {
+            this.connection.end();
+            this.connection = null;
+        }
+    }
+    async somar(produto: string, quantidade: number) {
+        try {
+            this.connection.connect();
+            const sql = "UPDATE estoque SET quantidade = quantidade + $2  WHERE id = $1";
+            await this.connection.query(sql, [produto, quantidade])
         } catch (error) {
             console.log(error)
         } finally {

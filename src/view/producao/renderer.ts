@@ -1,3 +1,4 @@
+import { ptbr } from "../ptbr";
 import "./login.css"
 import DataTable from "datatables.net-dt";
 
@@ -84,6 +85,7 @@ async function listaUltimosCadastrado() {
         data: formattedData,
         'order': [[1, 'asc']],
         "lengthMenu": [[6, 10, 20, -1], [6, 10, 20, "All"]],
+        language: ptbr,
         columns: [
             { title: "Renavam" },
             { title: "Modelo" },
@@ -94,7 +96,6 @@ async function listaUltimosCadastrado() {
             { title: "Data Fabricação" }
         ]
     });
-
 }
 
 function render(){
