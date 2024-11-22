@@ -11,6 +11,9 @@ export default class EstoqueController {
         ipcMain.handle('findAllEstoque', async () => {
             return await new EstoqueRepository().findAll();          
         })
+        ipcMain.handle('findAlllEstoque', async () => {
+            return await new EstoqueRepository().findAlll();          
+        })
         ipcMain.handle('createEstoque', async (_: any, item: any) => {
             const {nome, quantidade, fabricante, tipo } = item;
             const novoProduto = new Estoque(nome, quantidade, fabricante, tipo);

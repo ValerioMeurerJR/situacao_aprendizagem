@@ -1,4 +1,6 @@
-{
+import { ConfigLanguage } from "datatables.net-dt";
+
+export const ptbr = {
 	"sProcessing":   "A processar...",
 	"sLengthMenu":   "Mostrar _MENU_ registros",
 	"sZeroRecords":  "Não foram encontrados resultados",
@@ -13,5 +15,5 @@
 	    "sPrevious": "Anterior",
 	    "sNext":     "Seguinte",
 	    "sLast":     "Último"
-	}
-}
+	} 
+} as ConfigLanguage
