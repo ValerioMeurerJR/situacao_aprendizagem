@@ -47,12 +47,19 @@ const config: ForgeConfig = {
             preload: {
               js: './src/preload.ts',
             },
+          },
+          {
+            html: './src/view/index/index.html',
+            js: './src/view/index/renderer.ts',
+            name: 'Index',
+            preload: {
+              js: './src/preload.ts',
+            },
           }
         ],
       },
     }),
-    // Fuses are used to enable/disable various Electron functionality
-    // at package time, before code signing the application
+    
     new FusesPlugin({
       version: FuseVersion.V1,
       [FuseV1Options.RunAsNode]: false,

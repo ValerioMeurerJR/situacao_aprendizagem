@@ -1,8 +1,24 @@
 import DataTable from "datatables.net-dt";
 import Swal from "sweetalert2";
 import { ptbr } from "../ptbr";
+import "./index.css"
 
+// ============================ Menu ========================================================
 
+document.getElementById("menu-estoque").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaEstoque()    
+}) 
+document.getElementById("menu-producao").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaProducao()    
+}) 
+document.getElementById("menu-index").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaIndex()    
+}) 
+
+// ============================================================================================
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
     var nome = document.getElementById("nome") as HTMLInputElement;
     var quantidade = document.getElementById("quantidade") as HTMLInputElement;
@@ -108,8 +124,6 @@ async function RegistarEntrada(item: string) {
     const result = await (window as any).bancoAPI.createEntradaProduto(nota);
     listadeProdutos()
 }
-
-
 
 window.onload = () => {
     listadeProdutos();

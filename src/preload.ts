@@ -12,7 +12,12 @@ contextBridge.exposeInMainWorld('bancoAPI', {
 })
 
 contextBridge.exposeInMainWorld("navigateAPI", {
+    irPaginaEstoque: () => ipcRenderer.send("irPaginaEstoque"),
+    irPaginaProducao: () => ipcRenderer.send("irPaginaProducao"),
+    irPaginaLogin: () => ipcRenderer.send("irPaginaLogin"),
+    irPaginaIndex: () => ipcRenderer.send("irPaginaIndex"),
 })
 
 contextBridge.exposeInMainWorld('authAPI', {
 })
+

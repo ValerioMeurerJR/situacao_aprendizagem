@@ -3,9 +3,11 @@ import { hash, compare } from 'bcrypt';
 import EstoqueController from './controller/EstoqueController';
 import ProducaoController from './controller/ProducaoController';
 import EntradaProdutoController from './controller/EntradaProdutoController';
+import ScreenController from './controller/ScreenController';
 
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
 declare const LOGIN_WEBPACK_ENTRY: string;
+declare const INDEX_WEBPACK_ENTRY: string;
 declare const PRODUCAO_WEBPACK_ENTRY: string;
 declare const ESTOQUE_WEBPACK_ENTRY: string;
 
@@ -23,7 +25,7 @@ const createWindow = (): void => {
     },
   });
 
-  mainWindow.loadURL(ESTOQUE_WEBPACK_ENTRY);
+  mainWindow.loadURL(INDEX_WEBPACK_ENTRY);
 
   // mainWindow.webContents.openDevTools();
 };
@@ -33,6 +35,7 @@ app.on('ready', () => {
   new EstoqueController();
   new ProducaoController();
   new EntradaProdutoController();
+  new ScreenController(mainWindow);
 });
 
 app.on('window-all-closed', () => {
