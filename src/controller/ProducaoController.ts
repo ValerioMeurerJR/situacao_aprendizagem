@@ -10,12 +10,12 @@ export default class ProducaoController {
 
     private initialize() {
         ipcMain.handle('createProduto', async (_: any, produto: any) => {
-            const {renavam, modelo, motor, carcaca, kitpneu  } = produto;
+            const {nchassi, modelo, motor, chassi, kitpneu  } = produto;
             console.log(produto)
-            const novoVeiculo = new Producao(renavam, modelo, motor, carcaca, kitpneu);
+            const novoVeiculo = new Producao(nchassi, modelo, motor, chassi, kitpneu);
             new ProducaoRepository().save(novoVeiculo);
             new EstoqueRepository().menos(motor)
-            new EstoqueRepository().menos(carcaca)
+            new EstoqueRepository().menos(chassi)
             new EstoqueRepository().menos(kitpneu)
           })
           ipcMain.handle('findUltimosCadastrado', async () => {

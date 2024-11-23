@@ -22,20 +22,21 @@ document.getElementById("menu-inspecao").addEventListener("click", async (event:
 
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
-    var renavam = document.getElementById("renavam") as HTMLInputElement;
+    var nchassi = document.getElementById("nchassi") as HTMLInputElement;
     var modelo = document.getElementById("modelo") as HTMLInputElement;
     var motor = document.getElementById("motor") as HTMLInputElement;
     var kitpneu = document.getElementById("kitpneu") as HTMLInputElement;
-    var carcaca = document.getElementById("carcaca") as HTMLInputElement;
+    var chassi = document.getElementById("chassi") as HTMLInputElement;
     const carro = {
-        renavam: renavam.value,
+        nchassi: nchassi.value,
         modelo: modelo.value,
         motor: motor.value,
-        carcaca: carcaca.value,
+        chassi: chassi.value,
         kitpneu: kitpneu.value
     }
+    console.log(carro)
     const result = await (window as any).bancoAPI.createProducao(carro);
-    renavam.value = '';
+    nchassi.value = '';
     modelo.value = '';
     render();
 })
@@ -44,10 +45,10 @@ async function preencheComboBox() {
     const estoque = await (window as any).bancoAPI.findAllEstoque();
     var motor = document.getElementById("motor");
     var kitpneu = document.getElementById("kitpneu");
-    var carcaca = document.getElementById("carcaca");
+    var chassi = document.getElementById("chassi");
     motor.innerHTML = `<option value="" >Selecione uma opção</option>`;
     kitpneu.innerHTML = `<option value="" >Selecione uma opção</option>`;
-    carcaca.innerHTML = `<option value="" >Selecione uma opção</option>`;
+    chassi.innerHTML = `<option value="" >Selecione uma opção</option>`;
 
     for (var i = 0; i < estoque.length; i++) {
         if (estoque[i].tipo === 'Motor') {
@@ -58,8 +59,8 @@ async function preencheComboBox() {
             kitpneu.innerHTML += `
             <option value="${estoque[i].id}">${estoque[i].nome}</option>
         `;
-        } else if (estoque[i].tipo === 'Carcaca') {
-            carcaca.innerHTML += `
+        } else if (estoque[i].tipo === 'Chassi') {
+            chassi.innerHTML += `
             <option value="${estoque[i].id}">${estoque[i].nome}</option>
         `;
         }
@@ -75,10 +76,10 @@ async function listaUltimosCadastrado() {
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>Renavam</th>
+                <th>Numero Chassi</th>
                 <th>Modelo</th>
                 <th>Motor</th>
-                <th>Carcaça</th>
+                <th>Chassi</th>
                 <th>Kit Pneu</th>
                 <th>Status</th>
                 <th>Data Fabricação</th>
@@ -90,10 +91,10 @@ async function listaUltimosCadastrado() {
     </table>
     `
     const formattedData = ultimos.map((item: any) => [
-        item.renavam,
+        item.nchassi,
         item.modelo,
         item.motor,
-        item.carcaca,
+        item.chassi,
         item.kitpneu,
         item.status,
         new Date(item.data_fabricacao).toLocaleString('pt-BR')
@@ -105,10 +106,10 @@ async function listaUltimosCadastrado() {
         "lengthMenu": [[6, 10, 20, -1], [6, 10, 20, "All"]],
         language: ptbr,
         columns: [
-            { title: "Renavam" },
+            { title: "Numero Chassi" },
             { title: "Modelo" },
             { title: "Motor" },
-            { title: "Carcaça" },
+            { title: "Chassi" },
             { title: "Kit Pneu" },
             { title: "Status" },
             { title: "Data Fabricação" }

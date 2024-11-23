@@ -17,13 +17,13 @@ export default class ProducaoRepository {
     async save(producao: Producao) {
         try {
             this.connection.connect()
-            const sql = "INSERT INTO producao (id, renavam, modelo, motor_id, carcaca_id, kitPneu_id, status, data_fabricacao) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+            const sql = "INSERT INTO producao (id, nchassi, modelo, motor_id, chassi_id, kitPneu_id, status, data_fabricacao) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
             const values = [
                 producao.getId(),
-                producao.getRenavam(),
+                producao.getNChassi(),
                 producao.getModelo(),
                 producao.getMotorId(),
-                producao.getCarcacaId(),
+                producao.getChassiId(),
                 producao.getKitPneuId(),
                 producao.getStatus(),
                 producao.getDataFabricacao()];
@@ -57,17 +57,17 @@ export default class ProducaoRepository {
             this.connection.connect();
             const sql = `
                 SELECT 
-                p.renavam,
+                p.nchassi,
                 p.modelo,
                 m.nome as motor,
-                c.nome as Carcaca,
+                c.nome as chassi,
                 k.nome as KitPneu,
                 p.status,
                 p.data_fabricacao
                 FROM 
                 producao as p
                 INNER JOIN estoque m ON p.motor_id = m.id
-                INNER JOIN estoque c ON p.carcaca_id = c.id
+                INNER JOIN estoque c ON p.chassi_id = c.id
                 INNER JOIN estoque k ON p.kitPneu_id = k.id
                 ORDER BY data_fabricacao DESC`;
             const result = await this.connection.query(sql);
