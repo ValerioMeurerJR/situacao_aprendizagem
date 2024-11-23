@@ -55,6 +55,14 @@ const config: ForgeConfig = {
             preload: {
               js: './src/preload.ts',
             },
+          },
+          {
+            html: './src/view/inspecao/index.html',
+            js: './src/view/inspecao/renderer.ts',
+            name: 'inspecao',
+            preload: {
+              js: './src/preload.ts',
+            },
           }
         ],
       },

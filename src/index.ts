@@ -10,6 +10,7 @@ declare const LOGIN_WEBPACK_ENTRY: string;
 declare const INDEX_WEBPACK_ENTRY: string;
 declare const PRODUCAO_WEBPACK_ENTRY: string;
 declare const ESTOQUE_WEBPACK_ENTRY: string;
+declare const INSPECAO_WEBPACK_ENTRY: string;
 
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -25,7 +26,7 @@ const createWindow = (): void => {
     },
   });
 
-  mainWindow.loadURL(INDEX_WEBPACK_ENTRY);
+  mainWindow.loadURL(INSPECAO_WEBPACK_ENTRY);
 
   // mainWindow.webContents.openDevTools();
 };

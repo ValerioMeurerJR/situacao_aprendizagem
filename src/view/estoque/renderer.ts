@@ -4,7 +4,6 @@ import { ptbr } from "../ptbr";
 import "./index.css"
 
 // ============================ Menu ========================================================
-
 document.getElementById("menu-estoque").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
     (window as any).navigateAPI.irPaginaEstoque()    
@@ -17,7 +16,10 @@ document.getElementById("menu-index").addEventListener("click", async (event: Mo
     event.preventDefault();
     (window as any).navigateAPI.irPaginaIndex()    
 }) 
-
+document.getElementById("menu-inspecao").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaInspecao()    
+}) 
 // ============================================================================================
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
     var nome = document.getElementById("nome") as HTMLInputElement;
@@ -65,7 +67,7 @@ async function listadeProdutos() {
         item.quantidade,
         item.fabricante,
         item.tipo,
-        `<button onclick='RegistarEntrada("${item.id}")'>teste</button>`
+        `<button onclick='RegistarEntrada("${item.id}")'>Entrada Nota</button>`
         ]);
     console.log(formattedData)
 

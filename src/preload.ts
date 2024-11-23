@@ -16,6 +16,7 @@ contextBridge.exposeInMainWorld("navigateAPI", {
     irPaginaProducao: () => ipcRenderer.send("irPaginaProducao"),
     irPaginaLogin: () => ipcRenderer.send("irPaginaLogin"),
     irPaginaIndex: () => ipcRenderer.send("irPaginaIndex"),
+    irPaginaInspecao: () => ipcRenderer.send("irPaginaInspecao"),
 })
 
 contextBridge.exposeInMainWorld('authAPI', {

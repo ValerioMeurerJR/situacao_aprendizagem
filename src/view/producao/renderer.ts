@@ -2,7 +2,6 @@ import { ptbr } from "../ptbr";
 import "./login.css"
 import DataTable from "datatables.net-dt";
 // ============================ Menu ========================================================
-
 document.getElementById("menu-estoque").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
     (window as any).navigateAPI.irPaginaEstoque()    
@@ -15,8 +14,12 @@ document.getElementById("menu-index").addEventListener("click", async (event: Mo
     event.preventDefault();
     (window as any).navigateAPI.irPaginaIndex()    
 }) 
-
+document.getElementById("menu-inspecao").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaInspecao()    
+}) 
 // ============================================================================================
+
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
     var renavam = document.getElementById("renavam") as HTMLInputElement;
