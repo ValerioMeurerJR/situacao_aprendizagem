@@ -8,7 +8,9 @@ contextBridge.exposeInMainWorld('bancoAPI', {
     findAlllEstoque: async () => await ipcRenderer.invoke('findAlllEstoque'),
     findUltimosCadastrado: async () => await ipcRenderer.invoke('findUltimosCadastrado'),
     createEstoque: async (item: any) => await ipcRenderer.invoke('createEstoque', item),
-    createEntradaProduto: async (item: any) => await ipcRenderer.invoke('createEntradaProduto', item)
+    createEntradaProduto: async (item: any) => await ipcRenderer.invoke('createEntradaProduto', item),
+    findAllInspetor: async () => await ipcRenderer.invoke('findAllInspetor'),
+    createInspetor: async (item: any) => await ipcRenderer.invoke('createInspetor', item)
 })
 
 contextBridge.exposeInMainWorld("navigateAPI", {

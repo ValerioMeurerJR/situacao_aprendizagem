@@ -22,6 +22,7 @@ document.getElementById("menu-inspecao").addEventListener("click", async (event:
 }) 
 // ============================================================================================
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
     var nome = document.getElementById("nome") as HTMLInputElement;
     var quantidade = document.getElementById("quantidade") as HTMLInputElement;
     var fabricante = document.getElementById("fabricante") as HTMLInputElement;
