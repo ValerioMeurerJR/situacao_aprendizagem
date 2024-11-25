@@ -40,7 +40,7 @@ document.getElementById("cadastrar").addEventListener("click", async (event: Mou
     fabricante.value = '';
     tipo.value = '';
     listadeProdutos()
-})
+}) 
 
 async function listadeProdutos() {
     const Produtos = await (window as any).bancoAPI.findAlllEstoque();
