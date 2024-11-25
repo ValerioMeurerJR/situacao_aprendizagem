@@ -4,6 +4,7 @@ import EstoqueController from './controller/EstoqueController';
 import ProducaoController from './controller/ProducaoController';
 import EntradaProdutoController from './controller/EntradaProdutoController';
 import ScreenController from './controller/ScreenController';
+import InspetoresController from './controller/InspetoresController';
 
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
 declare const LOGIN_WEBPACK_ENTRY: string;
@@ -37,6 +38,7 @@ app.on('ready', () => {
   new ProducaoController();
   new EntradaProdutoController();
   new ScreenController(mainWindow);
+  new InspetoresController()
 });
 
 app.on('window-all-closed', () => {

@@ -3,7 +3,7 @@
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
-CREATE TABLE inpestores (
+CREATE TABLE inspetores (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
 	nome VARCHAR(50) NOT NULL,
 	email VARCHAR(50) UNIQUE NOT NULL,
@@ -27,11 +27,11 @@ CREATE TABLE producao (
     kitPneu_id UUID NOT NULL,
     status VARCHAR(50) NOT NULL,
     data_fabricacao TIMESTAMP NOT NULL,
-    inpestores_id UUID NULL,
+    inspetores_id UUID NULL,
 	FOREIGN KEY (motor_id) REFERENCES estoque(id) ON DELETE CASCADE,
 	FOREIGN KEY (chassi_id) REFERENCES estoque(id) ON DELETE CASCADE,
 	FOREIGN KEY (kitPneu_id) REFERENCES estoque(id) ON DELETE CASCADE,
-	FOREIGN KEY (inpestores_id) REFERENCES inpestores(id) ON DELETE CASCADE
+	FOREIGN KEY (inspetores_id) REFERENCES inspetores(id) ON DELETE CASCADE
 );
 
 CREATE TABLE entradaproduto (
