@@ -1,7 +1,12 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(../../assets/logo_01.png);
+  background-color: #333333;
 }
 
 nav.menu {
@@ -21,4 +26,73 @@ nav h1 {
   padding: 2px;
   border-radius: 16px;
   cursor: pointer;
+}
+
+header {
+  background-color: #ffffff;
+  margin: 30px auto 10px;
+  width: 30vw;
+  padding: 5px;
+  border-bottom-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+header h1 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 40px;
+  width: 80%;
+  margin: 30px auto;
+  background-color: cadetblue;
+}
+
+form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+form h2 {
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 20px;
+}
+
+form .input {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+  margin-bottom: 20px;
+}
+
+form .select {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+  margin-bottom: 20px;
+}
+
+form .input label{
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form .input input {
+  height: 48px;
+  font-size: 14px;
+  color: #666666;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #999999;
+  background-color: #f0f0f0;
+  padding: 0 10px;
 }
