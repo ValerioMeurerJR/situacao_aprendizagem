@@ -18,4 +18,8 @@ document.getElementById("menu-inspecao").addEventListener("click", async (event:
     event.preventDefault();
     (window as any).navigateAPI.irPaginaInspecao()    
 }) 
+document.getElementById("menu-funcionarios").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaFuncionarios()
+})
 // ============================================================================================

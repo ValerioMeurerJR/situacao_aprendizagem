@@ -2,24 +2,32 @@ import DataTable from "datatables.net-dt";
 import Swal from "sweetalert2";
 import { ptbr } from "../ptbr";
 import "./index.css"
+import { Funcionariolocal } from "src/entity/Funcionariolocal";
+
+let funcionario: Funcionariolocal;
+
 
 // ============================ Menu ========================================================
 document.getElementById("menu-estoque").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
-    (window as any).navigateAPI.irPaginaEstoque()    
-}) 
+    (window as any).navigateAPI.irPaginaEstoque()
+})
 document.getElementById("menu-producao").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
-    (window as any).navigateAPI.irPaginaProducao()    
-}) 
+    (window as any).navigateAPI.irPaginaProducao()
+})
 document.getElementById("menu-index").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
-    (window as any).navigateAPI.irPaginaIndex()    
-}) 
+    (window as any).navigateAPI.irPaginaIndex()
+})
 document.getElementById("menu-inspecao").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
-    (window as any).navigateAPI.irPaginaInspecao()    
-}) 
+    (window as any).navigateAPI.irPaginaInspecao()
+})
+document.getElementById("menu-funcionarios").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaFuncionarios()
+})
 // ============================================================================================
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
@@ -44,9 +52,8 @@ document.getElementById("cadastrar").addEventListener("click", async (event: Mou
 
 async function listadeProdutos() {
     const Produtos = await (window as any).bancoAPI.findAlllEstoque();
-    console.log(Produtos)
-    const divLista = document.getElementById("lista");   
-    divLista.innerHTML = ""; 
+    const divLista = document.getElementById("lista");
+    divLista.innerHTML = "";
     divLista.innerHTML = `
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -69,8 +76,7 @@ async function listadeProdutos() {
         item.fabricante,
         item.tipo,
         `<button onclick='RegistarEntrada("${item.id}")'>Entrada Nota</button>`
-        ]);
-    console.log(formattedData)
+    ]);
 
     new DataTable('#example', {
         data: formattedData,
@@ -104,15 +110,15 @@ async function RegistarEntrada(item: string) {
         title: 'Registrar Entrada de Estoque',
         html: html,
         showCancelButton: true,
-        showConfirmButton: true, 
+        showConfirmButton: true,
         preConfirm: () => {
-            
+
             const quantidade = (document.getElementById("quantidadeswal") as HTMLInputElement).value;
             const nNota = (document.getElementById("nNota") as HTMLInputElement).value;
 
             if (!nNota || !quantidade) {
                 Swal.showValidationMessage("Por favor, preencha todos os campos!");
-                return null; 
+                return null;
             }
 
             return { nNota, quantidade: quantidade };
@@ -130,6 +136,41 @@ async function RegistarEntrada(item: string) {
 
 window.onload = () => {
     listadeProdutos();
+    const funcionarioStorage = localStorage.getItem("funcionario");
+    
+    if (funcionarioStorage) {
+        const funcionariol = JSON.parse(funcionarioStorage);
+        const funcionariolocal: Funcionariolocal = {
+            id: funcionariol.id,
+            nome: funcionariol.nome,
+            email: funcionariol.email,
+            cargo: funcionariol.cargo
+        };
+        
+        funcionario = funcionariolocal; 
+    }
+    permissao()
 };
+
+function permissao() {
+    console.log(funcionario);
+    const ids = ["nome", "quantidade", "fabricante", "tipo"];
+    if ((funcionario.cargo == 'Logista') || (funcionario.cargo == 'Administrador')) {        
+        ids.forEach(id => {
+            const element = document.getElementById(id) as HTMLInputElement;
+            if (element) {
+                element.disabled = false; // Desativa o campo
+            }
+        });
+    }else{
+        ids.forEach(id => {
+            const element = document.getElementById(id) as HTMLInputElement;
+            if (element) {
+                element.disabled = true; // Desativa o campo
+            }
+        });
+    }
+}
+
 (window as any).RegistarEntrada = RegistarEntrada;
 (window as any).Swal = Swal;

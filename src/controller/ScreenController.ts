@@ -6,6 +6,7 @@ declare const INDEX_WEBPACK_ENTRY: string;
 declare const PRODUCAO_WEBPACK_ENTRY: string;
 declare const ESTOQUE_WEBPACK_ENTRY: string;
 declare const INSPECAO_WEBPACK_ENTRY: string;
+declare const FUNCIONARIOS_WEBPACK_ENTRY: string;
 
 export default class ScreenController {
     private mainWindow: BrowserWindow;
@@ -30,6 +31,9 @@ export default class ScreenController {
         })            
         ipcMain.on("irPaginaInspecao", () => {
             this.mainWindow.loadURL(INSPECAO_WEBPACK_ENTRY)
-        })        
+        })                    
+        ipcMain.on("irPaginaFuncionarios", () => {
+            this.mainWindow.loadURL(FUNCIONARIOS_WEBPACK_ENTRY)
+        })  
     }
 }

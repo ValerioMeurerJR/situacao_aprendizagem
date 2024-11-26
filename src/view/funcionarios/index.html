@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionarios</title>
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="menu">
+        <h1 id="menu-index">index</h1>
+        <h1 id="menu-inspecao">Inspeção</h1>
+        <h1 id="menu-producao">Producao</h1>
+        <h1 id="menu-estoque">Estoque</h1>
+        <h1 id="menu-funcionarios">Funcionários</h1>
+    </nav>
+    <main>
+        <div class="cadastro">
+            <h1>Novo cadastro</h1>
+            <div class="grupo-campos">
+                <input type="text" id="nome" placeholder="Nome">
+                <input type="text" id="usuario" placeholder="Usuario">
+                <input type="date" id="data_nascimento" placeholder="Data Nascimento">
+                <input type="text" id="email" placeholder="E-mail">
+                <input type="password" id="password" placeholder="Senha">
+                <input type="password" id="password_confirmation" placeholder="Confirma Senha">
+                <select id="cargo">
+                    <option>Produção</option>
+                    <option>Logista</option>
+                    <option>Inspetor</option>
+                    <option>Administrador</option>
+                </select>
+                <button id="Cadastrar">Cadastrar</button>
+            </div>
+        </div>
+        <aside>
+            <h2>Lista de Funcionarios</h2>
+            <div class="lista" id="lista"></div>
+        </aside>
+    </main>
+</body>
+<!-- id UUID PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+email VARCHAR(100) UNIQUE NOT NULL,
+usuario VARCHAR(32) UNIQUE NOT NULL,
+data_nascimento DATE NOT NULL,
+password_hash VARCHAR(200) NOT NULL,
+cargo VARCHAR(100) NOT NULL,
+criado_em TIMESTAMP NOT NULL,
+ atualizado_em TIMESTAMP NOT NULL	 -->
+</html>
