@@ -81,39 +81,50 @@ async function listadeCarros() {
     });
 }
 
-async function atualizarStatus(id: string){
+async function atualizarStatus(id: string) {
     console.log(id);
     const veiculo = await (window as any).bancoAPI.veiculofindById(id);
     console.log(veiculo);
-    
-    if(veiculo.status == "Pronto para inspeçao"){
-        Swal.fire("Assumir inspeção!")
-        
+
+    if (veiculo.status == "Pronto para inspeçao") {
         await Swal.fire({
             title: 'Atualizar Status para em Andamento',
             showCancelButton: true,
             showConfirmButton: true
         }).then((result) => {
             if (result.isConfirmed) {
-              (window as any).bancoAPI.veiculoupdateStatusById(id, 'Inspeçao em andamento');
-              Swal.fire("Saved!", "", "success");
+                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Inspeçao em andamento');
+                Swal.fire("Saved!", "", "success");
             } else if (result.isDenied) {
-              Swal.fire("Changes are not saved", "", "info");
+                Swal.fire("Changes are not saved", "", "info");
             }
-          });
-    }else if(veiculo.status == "Inspeçao em andamento"){ 
+        });
+    } else if (veiculo.status == "Inspeçao em andamento") {
+        await Swal.fire({
+            title: 'Veiculo foi Aprovado?',
+            showCancelButton: true,
+            showConfirmButton: true,
+            cancelButtonText: "Reprovado",
+            confirmButtonText: "Aprovado"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Aprovado');
+            } else if (result.isDismissed) {                    
+                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Reprovado');
+                console.log('Reprovado');
+            }
+        });
     }
     render()
 }
 
 function render() {
-    console.log("Atualizar")
     listadeCarros();
 }
 window.onload = () => {
     listadeCarros()
     const funcionarioStorage = localStorage.getItem("funcionario");
-    
+
     if (funcionarioStorage) {
         const funcionariol = JSON.parse(funcionarioStorage);
         const funcionariolocal: Funcionariolocal = {
@@ -122,8 +133,8 @@ window.onload = () => {
             email: funcionariol.email,
             cargo: funcionariol.cargo
         };
-        
-        funcionario = funcionariolocal; 
+
+        funcionario = funcionariolocal;
     }
     //permissao()
 };
@@ -131,14 +142,14 @@ window.onload = () => {
 function permissao() {
     console.log(funcionario);
     const ids = ["nome", "quantidade", "fabricante", "tipo"];
-    if ((funcionario.cargo == 'Inspetor') || (funcionario.cargo == 'Administrador')) {        
+    if ((funcionario.cargo == 'Inspetor') || (funcionario.cargo == 'Administrador')) {
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
                 element.disabled = false; // Desativa o campo
             }
         });
-    }else{
+    } else {
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
