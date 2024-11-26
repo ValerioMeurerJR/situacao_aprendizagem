@@ -30,11 +30,10 @@ nav h1 {
 
 header {
   background-color: #ffffff;
-  margin: 30px auto 10px;
-  width: 30vw;
-  padding: 5px;
-  border-bottom-right-radius: 16px;
-  border-top-left-radius: 16px;
+    margin: 30px auto 10px;
+    width: 80vw;
+    padding: 20px;
+    border-radius: 16px;
 }
 
 header h1 {
@@ -48,51 +47,21 @@ main {
   padding: 40px;
   width: 80%;
   margin: 30px auto;
-  background-color: cadetblue;
+ 
 }
 
-form {
-  padding: 16px;
+aside {
+  width: 100%;
+  height: 530px;
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 16px;
 }
 
-form h2 {
-  font-size: 25px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 20px;
-}
-
-form .input {
-  display: flex;
-  flex-direction: column;
-  row-gap: 3px;
-  margin-bottom: 20px;
-}
-
-form .select {
-  display: flex;
-  flex-direction: column;
-  row-gap: 3px;
-  margin-bottom: 20px;
-}
-
-form .input label{
-  color: #333333;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-form .input input {
-  height: 48px;
-  font-size: 14px;
-  color: #666666;
-  border-radius: 8px;
-  outline: none;
-  border: 2px solid #999999;
-  background-color: #f0f0f0;
-  padding: 0 10px;
+aside h2 {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: cursive;
+  text-align: center;
 }
