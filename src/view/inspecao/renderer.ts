@@ -2,8 +2,9 @@ import Swal from "sweetalert2";
 import "./index.css"
 import DataTable from "datatables.net-dt";
 import { ptbr } from "../ptbr";
+import { Funcionariolocal } from "src/entity/Funcionariolocal";
 
-
+let funcionario: Funcionariolocal;
 // ============================ Menu ========================================================
 document.getElementById("menu-estoque").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
@@ -21,23 +22,11 @@ document.getElementById("menu-inspecao").addEventListener("click", async (event:
     event.preventDefault();
     (window as any).navigateAPI.irPaginaInspecao()
 })
-// ============================================================================================ 
-
-document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
+document.getElementById("menu-funcionarios").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
-    var nome = document.getElementById("nome") as HTMLInputElement;
-    var email = document.getElementById("email") as HTMLInputElement;
-    var telefone = document.getElementById("telefone") as HTMLInputElement;
-    const item = {
-        nome: nome.value,
-        email: email.value,
-        telefone: telefone.value
-    };
-    const result = await (window as any).bancoAPI.createInspetor(item);
-    nome.value = '';
-    email.value = '';
-    telefone.value = '';
+    (window as any).navigateAPI.irPaginaFuncionarios()
 })
+// ============================================================================================ 
 
 async function listadeCarros() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
@@ -91,6 +80,7 @@ async function listadeCarros() {
         ]
     });
 }
+
 async function atualizarStatus(id: string){
     console.log(id);
     const veiculo = await (window as any).bancoAPI.veiculofindById(id);
@@ -122,6 +112,40 @@ function render() {
 }
 window.onload = () => {
     listadeCarros()
+    const funcionarioStorage = localStorage.getItem("funcionario");
+    
+    if (funcionarioStorage) {
+        const funcionariol = JSON.parse(funcionarioStorage);
+        const funcionariolocal: Funcionariolocal = {
+            id: funcionariol.id,
+            nome: funcionariol.nome,
+            email: funcionariol.email,
+            cargo: funcionariol.cargo
+        };
+        
+        funcionario = funcionariolocal; 
+    }
+    //permissao()
 };
+
+function permissao() {
+    console.log(funcionario);
+    const ids = ["nome", "quantidade", "fabricante", "tipo"];
+    if ((funcionario.cargo == 'Inspetor') || (funcionario.cargo == 'Administrador')) {        
+        ids.forEach(id => {
+            const element = document.getElementById(id) as HTMLInputElement;
+            if (element) {
+                element.disabled = false; // Desativa o campo
+            }
+        });
+    }else{
+        ids.forEach(id => {
+            const element = document.getElementById(id) as HTMLInputElement;
+            if (element) {
+                element.disabled = true; // Desativa o campo
+            }
+        });
+    }
+}
 (window as any).atualizarStatus = atualizarStatus;
 (window as any).Swal = Swal;

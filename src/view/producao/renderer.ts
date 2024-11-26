@@ -1,6 +1,8 @@
+import { Funcionariolocal } from "src/entity/Funcionariolocal";
 import { ptbr } from "../ptbr";
 import "./login.css"
 import DataTable from "datatables.net-dt";
+let funcionario: Funcionariolocal;
 // ============================ Menu ========================================================
 document.getElementById("menu-estoque").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
@@ -18,6 +20,10 @@ document.getElementById("menu-inspecao").addEventListener("click", async (event:
     event.preventDefault();
     (window as any).navigateAPI.irPaginaInspecao()    
 }) 
+document.getElementById("menu-funcionarios").addEventListener("click", async (event: MouseEvent) => {
+    event.preventDefault();
+    (window as any).navigateAPI.irPaginaFuncionarios()
+})
 // ============================================================================================
 
 document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
@@ -125,4 +131,38 @@ function render(){
 window.onload = () => {
     preencheComboBox();
     listaUltimosCadastrado();
+    const funcionarioStorage = localStorage.getItem("funcionario");
+    
+    if (funcionarioStorage) {
+        const funcionariol = JSON.parse(funcionarioStorage);
+        const funcionariolocal: Funcionariolocal = {
+            id: funcionariol.id,
+            nome: funcionariol.nome,
+            email: funcionariol.email,
+            cargo: funcionariol.cargo
+        };
+        
+        funcionario = funcionariolocal; 
+    }
+    permissao()
 };
+
+function permissao() {
+    console.log(funcionario);
+    const ids = ["nome", "quantidade", "fabricante", "tipo"];
+    if ((funcionario.cargo == 'Produção') || (funcionario.cargo == 'Administrador')) {        
+        ids.forEach(id => {
+            const element = document.getElementById(id) as HTMLInputElement;
+            if (element) {
+                element.disabled = false; // Desativa o campo
+            }
+        });
+    }else{
+        ids.forEach(id => {
+            const element = document.getElementById(id) as HTMLInputElement;
+            if (element) {
+                element.disabled = true; // Desativa o campo
+            }
+        });
+    }
+}
