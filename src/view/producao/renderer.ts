@@ -41,7 +41,7 @@ document.getElementById("cadastrar").addEventListener("click", async (event: Mou
         kitpneu: kitpneu.value
     }
     console.log(carro)
-    const result = await (window as any).bancoAPI.createProducao(carro);
+    await (window as any).bancoAPI.createProducao(carro);
     nchassi.value = '';
     modelo.value = '';
     render();
@@ -123,9 +123,9 @@ async function listaUltimosCadastrado() {
     });
 }
 
-function render(){
+async function render(){
     console.log("Atualizar")
-    listaUltimosCadastrado();    
+    await listaUltimosCadastrado();    
     preencheComboBox();
 }
 window.onload = () => {
@@ -150,18 +150,20 @@ window.onload = () => {
 function permissao() {
     console.log(funcionario);
     const ids = ["nome", "quantidade", "fabricante", "tipo"];
-    if ((funcionario.cargo == 'Produção') || (funcionario.cargo == 'Administrador')) {        
+    if ((funcionario.cargo == 'Produção') || (funcionario.cargo == 'Administrador')) {   
+        (document.getElementById("cadastrar") as HTMLButtonElement).disabled = false     
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
-                element.disabled = false; // Desativa o campo
+                element.disabled = false; 
             }
         });
     }else{
+        (document.getElementById("cadastrar") as HTMLButtonElement).disabled = true
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
-                element.disabled = true; // Desativa o campo
+                element.disabled = true;
             }
         });
     }

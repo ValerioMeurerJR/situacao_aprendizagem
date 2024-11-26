@@ -28,7 +28,7 @@ document.getElementById("menu-funcionarios").addEventListener("click", async (ev
 // ============================================================================================
 
 
-document.getElementById("Cadastrar").addEventListener("click", async (event: MouseEvent) => {
+document.getElementById("cadastrar").addEventListener("click", async (event: MouseEvent) => {
     event.preventDefault();
     var name = document.getElementById("nome") as HTMLInputElement;
     var user = document.getElementById("usuario") as HTMLInputElement;
@@ -107,10 +107,10 @@ async function listarFuncionarios() {
         item.cargo,
         new Date(item.criado_em).toLocaleString('pt-BR'),
         new Date(item.atualizado_em).toLocaleString('pt-BR'),
-        `<button onclick='atualizarStatus("${item.id}")'>Editar</button>`
+        `<button class='button' onclick='atualizarFuncionario("${item.id}")'>Editar</button>`
     ]);
 
-    new DataTable('#example', {
+    const table = new DataTable('#example', {
         data: formattedData,
         'order': [[1, 'asc']],
         "lengthMenu": [[6, 10, 20, -1], [6, 10, 20, "All"]],
@@ -126,6 +126,10 @@ async function listarFuncionarios() {
             { title: "Ação" }
         ]
     });
+    table.on('draw', () => {
+        permissao();
+    });
+    permissao();
 }
 
 
@@ -152,23 +156,38 @@ window.onload = () => {
 };
 
 function permissao() {
-    console.log(funcionario);
-    const ids = ["nome", "usuario", "data_nascimento", "email", "password", "password_confirmation", "cargo"];
-    if (funcionario.cargo == 'Administrador') {        
+    const ids = ["nome", "usuario", "data_nascimento", "email", "password", "password_confirmation", "cargo"];    
+    const buttons = document.getElementsByClassName("button") as HTMLCollectionOf<HTMLButtonElement>;
+    if (funcionario.cargo == 'Administrador') { 
+        (document.getElementById("cadastrar") as HTMLButtonElement).disabled = false
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = false;
+        }       
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
-                element.disabled = false; // Desativa o campo
+                element.disabled = false;
             }
         });
     }else{
+        (document.getElementById("cadastrar") as HTMLButtonElement).disabled = true
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+            buttons[i].innerText = "Desativado";
+        }
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
-                element.disabled = true; // Desativa o campo
+                element.disabled = true;
             }
         });
     }
 }
+
+function atualizarFuncionario(id: string){
+    console.log(id)
+}
+
+(window as any).atualizarFuncionario = atualizarFuncionario;
 (window as any).listarFuncionarios = listarFuncionarios;
 (window as any).Swal = Swal;
