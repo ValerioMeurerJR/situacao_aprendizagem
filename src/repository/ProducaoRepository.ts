@@ -57,6 +57,7 @@ export default class ProducaoRepository {
             this.connection.connect();
             const sql = `
                 SELECT 
+                p.id,
                 p.nchassi,
                 p.modelo,
                 m.nome as motor,
@@ -86,6 +87,34 @@ export default class ProducaoRepository {
             this.connection.connect();
             const sql = "SELECT * FROM producao WHERE renavam = $1";
             const result = await this.connection.query(sql, [renavam]);
+            return result.rows[0];
+        } catch (error) {
+            console.log(error)
+            return []
+        } finally {
+            this.connection.end();
+            this.connection = null;
+        }
+    }
+    async veiculofindById(id: string) {
+        try {
+            this.connection.connect();
+            const sql = "SELECT * FROM producao WHERE id = $1";
+            const result = await this.connection.query(sql, [id]);
+            return result.rows[0];
+        } catch (error) {
+            console.log(error)
+            return []
+        } finally {
+            this.connection.end();
+            this.connection = null;
+        }
+    }
+    async veiculoupdateStatusById(id: string, novoStatus: string) {
+        try {
+            this.connection.connect();
+            const sql = "UPDATE producao SET status = $1 WHERE id = $2";
+            const result = await this.connection.query(sql, [novoStatus, id]);
             return result.rows[0];
         } catch (error) {
             console.log(error)

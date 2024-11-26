@@ -5,6 +5,7 @@ import ProducaoController from './controller/ProducaoController';
 import EntradaProdutoController from './controller/EntradaProdutoController';
 import ScreenController from './controller/ScreenController';
 import InspetoresController from './controller/InspetoresController';
+import FuncionariosController from './controller/FuncionariosController';
 
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
 declare const LOGIN_WEBPACK_ENTRY: string;
@@ -27,7 +28,7 @@ const createWindow = (): void => {
     },
   });
 
-  mainWindow.loadURL(INSPECAO_WEBPACK_ENTRY);
+  mainWindow.loadURL(LOGIN_WEBPACK_ENTRY);
 
   // mainWindow.webContents.openDevTools();
 };
@@ -39,6 +40,7 @@ app.on('ready', () => {
   new EntradaProdutoController();
   new ScreenController(mainWindow);
   new InspetoresController()
+  new FuncionariosController()
 });
 
 app.on('window-all-closed', () => {
@@ -53,4 +55,7 @@ app.on('activate', () => {
   }
 });
 
-
+ipcMain.handle('hash_password', async (_: any, credentials: any) => {
+  const {password, password_hash} = credentials
+  return await compare(password, password_hash);
+})

@@ -21,5 +21,11 @@ export default class ProducaoController {
     ipcMain.handle('findUltimosCadastrado', async () => {
       return await new ProducaoRepository().findUltimosCadastrado();
     })
+    ipcMain.handle('veiculofindById', async (_: any, id: string) => {
+      return await new ProducaoRepository().veiculofindById(id);
+    })
+    ipcMain.handle('veiculoupdateStatusById', async (_: any, id: string, novoStatus: string) => {
+      return await new ProducaoRepository().veiculoupdateStatusById(id, novoStatus);
+    })
   }
 }
