@@ -83,8 +83,8 @@ aside h2 {
 
 aside .lista {
   text-align: center;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 
@@ -165,11 +165,3 @@ form button:hover {
   background-color: darkturquoise;
 }
 
-
-/* .input input,
-.select select {
-    padding: 8px 16px; 
-    border-radius: 10px;
-    font-size: 16px;
-    border:  1px solid #999;
-} */
