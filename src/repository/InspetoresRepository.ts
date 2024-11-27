@@ -7,11 +7,11 @@ export default class InspetoresRepository {
     constructor() {
         if(!this.connection){
             this.connection = new Client({
-                host: "localhost",
-                port: 5432,
+                host: "valeriomeurer.ddns.net",
+                port: 8086,
                 database: 'fabrica',
                 user: 'postgres',
-                password: 'senai'
+                password: '4qcMR484g9AA'
             });
         }
     }
