@@ -16,7 +16,7 @@ export default class EntradaProdutoRepository {
             });
         }
     }
-
+ 
     async save(EntradaProduto: EntradaProduto){
         try {
             this.connection.connect()

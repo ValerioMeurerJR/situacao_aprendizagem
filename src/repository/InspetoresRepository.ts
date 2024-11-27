@@ -13,7 +13,7 @@ export default class InspetoresRepository {
                 user: 'postgres',
                 password: '4qcMR484g9AA'
             });
-        }
+        } 
     }
 
     async save(inspetor: Inspetores){

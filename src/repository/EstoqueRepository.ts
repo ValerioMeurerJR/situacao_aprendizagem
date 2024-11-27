@@ -14,7 +14,7 @@ export default class EstoqueRepository {
                 password: '4qcMR484g9AA'
             });
         }
-    }
+    } 
 
     async save(estoque: Estoque){
         try {

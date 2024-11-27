@@ -13,7 +13,7 @@ export default class ProducaoRepository {
                 password: '4qcMR484g9AA'
             });
         }
-    }
+    } 
     async save(producao: Producao) {
         try {
             this.connection.connect()

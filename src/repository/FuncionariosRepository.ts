@@ -13,7 +13,7 @@ export default class FuncionariosRepository {
                 password: '4qcMR484g9AA'
             });
         }	
-        // id UUID PRIMARY KEY,
+        // id UUID PRIMARY  KEY,
         // nome VARCHAR(100) NOT NULL,
         // email VARCHAR(100) UNIQUE NOT NULL,
         // usuario VARCHAR(32) UNIQUE NOT NULL,
