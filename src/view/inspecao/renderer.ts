@@ -60,10 +60,10 @@ async function listadeCarros() {
         item.kitpneu,
         item.status,
         new Date(item.data_fabricacao).toLocaleString('pt-BR'),
-        `<button onclick='atualizarStatus("${item.id}")'>Atualizar Status</button>`
+        `<button class="button" onclick='atualizarStatus("${item.id}")'>Atualizar Status</button>`
     ]);
 
-    new DataTable('#example', {
+    const table = new DataTable('#example', {
         data: formattedData,
         'order': [[1, 'asc']],
         "lengthMenu": [[6, 10, 20, -1], [6, 10, 20, "All"]],
@@ -79,6 +79,10 @@ async function listadeCarros() {
             { title: "Ação" }
         ]
     });
+    table.on('draw', () => {
+        permissao();
+    });
+    permissao();
 }
 
 async function atualizarStatus(id: string) {
@@ -109,9 +113,8 @@ async function atualizarStatus(id: string) {
         }).then((result) => {
             if (result.isConfirmed) {
                 (window as any).bancoAPI.veiculoupdateStatusById(id, 'Aprovado');
-            } else if (result.isDismissed) {                    
+            } else if (result.isDismissed) {
                 (window as any).bancoAPI.veiculoupdateStatusById(id, 'Reprovado');
-                console.log('Reprovado');
             }
         });
     }
@@ -136,26 +139,23 @@ window.onload = () => {
 
         funcionario = funcionariolocal;
     }
-    //permissao()
+
 };
 
 function permissao() {
     console.log(funcionario);
-    const ids = ["nome", "quantidade", "fabricante", "tipo"];
     if ((funcionario.cargo == 'Inspetor') || (funcionario.cargo == 'Administrador')) {
-        ids.forEach(id => {
-            const element = document.getElementById(id) as HTMLInputElement;
-            if (element) {
-                element.disabled = false; // Desativa o campo
-            }
-        });
+        const buttons = document.getElementsByClassName("button") as HTMLCollectionOf<HTMLButtonElement>;
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = false;
+        }
+
     } else {
-        ids.forEach(id => {
-            const element = document.getElementById(id) as HTMLInputElement;
-            if (element) {
-                element.disabled = true; // Desativa o campo
-            }
-        });
+        const buttons = document.getElementsByClassName("button") as HTMLCollectionOf<HTMLButtonElement>;
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+            buttons[i].innerText = "Desativado";
+        }
     }
 }
 (window as any).atualizarStatus = atualizarStatus;

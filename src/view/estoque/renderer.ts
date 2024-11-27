@@ -75,10 +75,10 @@ async function listadeProdutos() {
         item.quantidade,
         item.fabricante,
         item.tipo,
-        `<button onclick='RegistarEntrada("${item.id}")'>Entrada Nota</button>`
+        `<button class='button' onclick='RegistarEntrada("${item.id}")'>Entrada Nota</button>`
     ]);
 
-    new DataTable('#example', {
+    const table = new DataTable('#example', {
         data: formattedData,
         'order': [[1, 'asc']],
         "lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]],
@@ -91,6 +91,10 @@ async function listadeProdutos() {
             { title: "Ação" }
         ]
     });
+    table.on('draw', () => {
+        permissao();
+    });
+    permissao();
 }
 async function RegistarEntrada(item: string) {
     const html = `
@@ -105,14 +109,12 @@ async function RegistarEntrada(item: string) {
             </div>
         </form>
     `;
-
-    const { value: formValues } = await Swal.fire({
+    const { isConfirmed, value: formValues } = await Swal.fire({
         title: 'Registrar Entrada de Estoque',
         html: html,
         showCancelButton: true,
         showConfirmButton: true,
         preConfirm: () => {
-
             const quantidade = (document.getElementById("quantidadeswal") as HTMLInputElement).value;
             const nNota = (document.getElementById("nNota") as HTMLInputElement).value;
 
@@ -121,9 +123,15 @@ async function RegistarEntrada(item: string) {
                 return null;
             }
 
-            return { nNota, quantidade: quantidade };
+            return { nNota, quantidade };
         }
     });
+
+    if (!isConfirmed) {
+        return;
+    }
+
+
 
     const nota = {
         numero_nota: formValues.nNota,
@@ -137,7 +145,7 @@ async function RegistarEntrada(item: string) {
 window.onload = () => {
     listadeProdutos();
     const funcionarioStorage = localStorage.getItem("funcionario");
-    
+
     if (funcionarioStorage) {
         const funcionariol = JSON.parse(funcionarioStorage);
         const funcionariolocal: Funcionariolocal = {
@@ -146,8 +154,7 @@ window.onload = () => {
             email: funcionariol.email,
             cargo: funcionariol.cargo
         };
-        
-        funcionario = funcionariolocal; 
+        funcionario = funcionariolocal;
     }
     permissao()
 };
@@ -155,21 +162,33 @@ window.onload = () => {
 function permissao() {
     console.log(funcionario);
     const ids = ["nome", "quantidade", "fabricante", "tipo"];
-    if ((funcionario.cargo == 'Logista') || (funcionario.cargo == 'Administrador')) {        
+    const buttons = document.getElementsByClassName("button") as HTMLCollectionOf<HTMLButtonElement>;
+    if ((funcionario.cargo == 'Logista') || (funcionario.cargo == 'Administrador')) {
+        (document.getElementById("cadastrar") as HTMLButtonElement).disabled = false
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = false;
+        }
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
                 element.disabled = false; // Desativa o campo
             }
         });
-    }else{
+    } else {
         ids.forEach(id => {
             const element = document.getElementById(id) as HTMLInputElement;
             if (element) {
                 element.disabled = true; // Desativa o campo
             }
         });
+        (document.getElementById("cadastrar") as HTMLButtonElement).disabled = true
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+            buttons[i].innerText = "Desativado";
+        }
     }
+
+
 }
 
 (window as any).RegistarEntrada = RegistarEntrada;
