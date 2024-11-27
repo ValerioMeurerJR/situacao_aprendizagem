@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import "./index.css"
 
 
 document.getElementById("acessar").addEventListener("click", async (event: MouseEvent) => {

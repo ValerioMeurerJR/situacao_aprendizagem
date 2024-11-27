@@ -4,30 +4,34 @@
     box-sizing: border-box;
 }
 
+body {
+    background: url(../../assets/a.webp);
+    background-size: cover;
+}
+
 main {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    padding: 40px;
-    width: 80%;
-    margin: 125px auto;
-   
-
+    background-color: dimgray;
+    width: 300px;
+    margin-left: 40%;
+    display: grid;
+    place-items: center;
+    margin-top: 16%;
+    border-radius: 16px;
+    padding: 20px;
 }
 
-.login .cadastro {
-    width: 50%;
+@media (min-width: 300px){
+    main .login {
+        width: auto;
+
+    }
 }
 
-.login {
-    border-right: 2px solid #333;
-}
-
-h1 {
+form h1 {
+    color: darkblue;
     font-size: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    color: #999;
     margin-bottom: 20px;
 }
 
@@ -39,18 +43,18 @@ h1 {
 }
 
 .grupo-campos input {
-    padding: 8px 16px; 
+    padding: 8px 16px;
     border-radius: 10px;
     font-size: 16px;
-    border:  1px solid #999;
+    border: 1px solid #999;
 }
 
 
 .grupo-campos button {
-    padding: 14px; 
+    padding: 14px;
     border-radius: 10px;
     font-size: 16px;
-    border: none;    
+    border: none;
     color: #333;
     font-size: 16px;
     font-weight: bold;
@@ -58,5 +62,5 @@ h1 {
 }
 
 .grupo-campos button:hover {
-    background-color: #999;
+    background-color: lightskyblue;
 }
