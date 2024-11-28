@@ -9,11 +9,6 @@ body {
     background-color: #333333;
 }
 
-/* body div {
-    display: flex;
-    flex-direction: column;
-} */
-
 nav.menu {
     background-color: cornflowerblue;
     display: flex;

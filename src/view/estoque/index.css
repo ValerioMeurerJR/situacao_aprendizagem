@@ -29,25 +29,12 @@ nav h1 {
     cursor: pointer;
 }
 
-header {
-    background-color: #ffffff;
-    margin: 30px auto 10px;
-    width: 80vw;
-    padding: 20px;
-    border-radius: 16px;
-}
-
-header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    font-family: cursive;
-    text-align: center;
-}
 
 main {
     height: 500px;
     width: 80vw;
-    margin: 20px auto 0;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
     column-gap: 20px;
@@ -155,18 +142,33 @@ aside h2 {
     text-align: center;
 }
 
-aside .lista{
-   margin: auto, 16px;
-   border-radius: 16px;
-   margin-left: 16px;
-   margin-right: 16px;
+aside .lista {
+    margin: auto, 16px;
+    border-radius: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 @media (min-width: 520px) {
-    aside .lista{
+    aside .lista {
         overflow: auto;
         max-height: 500px;
         padding: 16px;
     }
 }
 
+
+/* header {
+    background-color: #ffffff;
+    margin: 30px auto 10px;
+    width: 80vw;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: cursive;
+    text-align: center;
+} */
