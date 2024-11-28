@@ -187,8 +187,6 @@ function permissao() {
             buttons[i].innerText = "Desativado";
         }
     }
-
-
 }
 
 (window as any).RegistarEntrada = RegistarEntrada;
