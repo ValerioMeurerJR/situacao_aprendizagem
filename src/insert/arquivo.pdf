@@ -61,3 +61,7 @@ INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Jeep', 70, 'Je
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Chevrolet', 80, 'Chevrolet', 'Chassi');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Toyota', 90, 'Toyota', 'Chassi');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Mercedes-Benz', 55, 'Mercedes-Benz', 'Chassi');
+
+-- Inserindo usuarios
+INSERT INTO funcionarios (id, Nome, email, usuario, data_nascimento, password_hash, cargo, criado_em, atualizado_em) 
+values ('0bd59649-1d92-4406-9bd4-46ab47ba6329', 'Administrador', 'admin@gmail.com', 'admin', '2000-05-09', '$2b$12$rRm2hP5ke.Z0RMmYGoO3uuQyLnRUpVcMb6bNXax71pmbrYroDjqQS', 'Administrador', '2024-11-27', '2024-11-27' )
