@@ -45,7 +45,7 @@ INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Ford Dur
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Cummins ISF 2.8 Diesel', 50, 'Cummins', 'Motor');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Honda L15B7', 75, 'Honda', 'Motor');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Volkswagen EA888', 80, 'Volkswagen', 'Motor');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Toyota 2ZR-FE', 90, 'Toyota', 'Motor');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Toyota 2ZR-FE', 90, 'Toyota', 'Motor')
 
 -- Inserindo kits de pneus
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Pirelli', 200, 'Pirelli', 'Pneu');
@@ -54,11 +54,10 @@ INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Con
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Michelin', 220, 'Michelin', 'Pneu');
 
 -- Inserindo fabricantes de veículos
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Tesla', 50, 'Tesla', 'carcaca');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('BMW', 60, 'BMW', 'carcaca');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Volvo', 40, 'Volvo', 'carcaca');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Jeep', 70, 'Jeep', 'carcaca');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Chevrolet', 80, 'Chevrolet', 'carcaca');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Toyota', 90, 'Toyota', 'carcaca');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Mercedes-Benz', 55, 'Mercedes-Benz', 'carcaca');
-
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Tesla', 50, 'Tesla', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('BMW', 60, 'BMW', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Volvo', 40, 'Volvo', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Jeep', 70, 'Jeep', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Chevrolet', 80, 'Chevrolet', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Toyota', 90, 'Toyota', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Mercedes-Benz', 55, 'Mercedes-Benz', 'Chassi');

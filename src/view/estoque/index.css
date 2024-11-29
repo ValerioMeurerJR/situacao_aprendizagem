@@ -128,7 +128,7 @@ form button:hover {
 
 aside {
     width: 100%;
-    height: 530px;
+    height:500px;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
