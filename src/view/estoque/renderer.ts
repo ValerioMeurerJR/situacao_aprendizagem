@@ -2,7 +2,7 @@ import DataTable from "datatables.net-dt";
 import Swal from "sweetalert2";
 import { ptbr } from "../ptbr";
 import "./index.css"
-import { Funcionariolocal } from "src/entity/Funcionariolocal";
+import { Funcionariolocal } from "src/interface/Funcionariolocal";
 
 let funcionario: Funcionariolocal;
 

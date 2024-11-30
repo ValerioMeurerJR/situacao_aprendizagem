@@ -125,12 +125,41 @@ export default class ProducaoRepository {
         }
     }
 
-    async PodDataTotal(data: Date) {
+    async PodDataTotal(incio: string, fim: string) {
         try {
-            console.log(data)
             this.connection.connect();
-            const sql = 'SELECT modelo, COUNT(*) AS quantidade FROM producao WHERE DATE(data_fabricacao) IN ($1) GROUP BY modelo;'
-            const result = await this.connection.query(sql, [data]);
+            const sql = `
+                SELECT modelo, data_fabricacao
+                FROM producao
+                WHERE data_fabricacao::date BETWEEN $1 AND $2;
+                `;
+            const result = await this.connection.query(sql, [incio, fim]);
+            return result.rows;
+        } catch (error) {
+            console.log(error)
+            return []
+        } finally {
+            this.connection.end();
+            this.connection = null;
+        }
+
+    }
+    async PodDataEstoque(incio: string, fim: string) {
+        try {
+            this.connection.connect();
+            const sql = `
+                SELECT 
+                    em.nome as motor,
+                    ch.nome as chassi,
+                    pn.nome as pneu,
+                    p.data_fabricacao
+                    FROM producao as p
+                    INNER JOIN estoque em ON p.motor_id = em.id
+                    INNER JOIN estoque ch ON p.chassi_id = ch.id
+                    INNER JOIN estoque pn ON p.kitpneu_id = pn.id
+                WHERE data_fabricacao::date BETWEEN $1 AND $2;
+                `;
+            const result = await this.connection.query(sql, [incio, fim]);
             return result.rows;
         } catch (error) {
             console.log(error)

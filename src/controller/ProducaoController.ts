@@ -27,8 +27,11 @@ export default class ProducaoController {
     ipcMain.handle('veiculoupdateStatusById', async (_: any, id: string, novoStatus: string) => {
       return await new ProducaoRepository().veiculoupdateStatusById(id, novoStatus);
     })
-    ipcMain.handle('PodDataTotal', async (_: any, data: Date) => {
-      return await new ProducaoRepository().PodDataTotal(data);
+    ipcMain.handle('PodDataTotal', async (_: any, inicio: string, fim: string) => {
+      return await new ProducaoRepository().PodDataTotal(inicio, fim);
+    })
+    ipcMain.handle('PodDataEstoque', async (_: any, inicio: string, fim: string) => {
+      return await new ProducaoRepository().PodDataEstoque(inicio, fim);
     })
   }
 }

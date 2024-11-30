@@ -3,7 +3,7 @@ import { contextBridge, ipcRenderer } from "electron";
 contextBridge.exposeInMainWorld('bancoAPI', {
     createProducao: async (producao: any) => await ipcRenderer.invoke('createProduto', producao),
     findAllProducao: async () => await ipcRenderer.invoke('findAllProducao'),
-    PodDataTotal: async (data: Date) => await ipcRenderer.invoke('PodDataTotal', data),
+    PodDataTotal: async (inicio: string, fim: string) => await ipcRenderer.invoke('PodDataTotal', inicio, fim),
     estoquefindByTipo: async (tipo: string) => await ipcRenderer.invoke('estoquefindByTipo', tipo),
     findAllEstoque: async () => await ipcRenderer.invoke('findAllEstoque'),
     findAlllEstoque: async () => await ipcRenderer.invoke('findAlllEstoque'),
@@ -13,7 +13,8 @@ contextBridge.exposeInMainWorld('bancoAPI', {
     findAllInspetor: async () => await ipcRenderer.invoke('findAllInspetor'),
     createInspetor: async (item: any) => await ipcRenderer.invoke('createInspetor', item),
     veiculofindById: async (id: string) => await ipcRenderer.invoke('veiculofindById', id),
-    veiculoupdateStatusById: async (id: string, novoStatus: string) => await ipcRenderer.invoke('veiculoupdateStatusById', id, novoStatus)
+    veiculoupdateStatusById: async (id: string, novoStatus: string) => await ipcRenderer.invoke('veiculoupdateStatusById', id, novoStatus),
+    PodDataEstoque: async (inicio: string, fim: string) => await ipcRenderer.invoke('PodDataEstoque', inicio, fim)
 })
 
 contextBridge.exposeInMainWorld('bancoAPIUsuario', {

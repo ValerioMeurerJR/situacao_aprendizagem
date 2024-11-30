@@ -1,4 +1,4 @@
-import { Funcionariolocal } from "src/entity/Funcionariolocal";
+import { Funcionariolocal } from "src/interface/Funcionariolocal";
 import { ptbr } from "../ptbr";
 import "./login.css"
 import DataTable from "datatables.net-dt";
