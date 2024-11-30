@@ -13,7 +13,7 @@ export default class ProducaoRepository {
                 password: '4qcMR484g9AA'
             });
         }
-    } 
+    }
     async save(producao: Producao) {
         try {
             this.connection.connect()
@@ -123,6 +123,23 @@ export default class ProducaoRepository {
             this.connection.end();
             this.connection = null;
         }
+    }
+
+    async PodDataTotal(data: Date) {
+        try {
+            console.log(data)
+            this.connection.connect();
+            const sql = 'SELECT modelo, COUNT(*) AS quantidade FROM producao WHERE DATE(data_fabricacao) IN ($1) GROUP BY modelo;'
+            const result = await this.connection.query(sql, [data]);
+            return result.rows;
+        } catch (error) {
+            console.log(error)
+            return []
+        } finally {
+            this.connection.end();
+            this.connection = null;
+        }
+
     }
 
     // async delete(id: string) {

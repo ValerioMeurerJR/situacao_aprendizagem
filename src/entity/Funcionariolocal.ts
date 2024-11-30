@@ -4,3 +4,9 @@ export interface Funcionariolocal {
     email: string;
     cargo: string;
 }
+
+export interface DataValue {
+    name: string,
+    type: string,
+    data: string[]
+}

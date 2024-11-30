@@ -3,6 +3,7 @@ import { contextBridge, ipcRenderer } from "electron";
 contextBridge.exposeInMainWorld('bancoAPI', {
     createProducao: async (producao: any) => await ipcRenderer.invoke('createProduto', producao),
     findAllProducao: async () => await ipcRenderer.invoke('findAllProducao'),
+    PodDataTotal: async (data: Date) => await ipcRenderer.invoke('PodDataTotal', data),
     estoquefindByTipo: async (tipo: string) => await ipcRenderer.invoke('estoquefindByTipo', tipo),
     findAllEstoque: async () => await ipcRenderer.invoke('findAllEstoque'),
     findAlllEstoque: async () => await ipcRenderer.invoke('findAlllEstoque'),
