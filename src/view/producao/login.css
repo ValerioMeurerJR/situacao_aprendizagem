@@ -28,20 +28,6 @@ nav h1 {
   cursor: pointer;
 }
 
-header {
-  background-color: #ffffff;
-  margin: 30px auto 10px;
-  width: 80vw;
-  padding: 20px;
-  border-radius: 16px;
-}
-
-header h1 {
-  font-size: 24px;
-  font-weight: 700;
-  font-family: cursive;
-  text-align: center;
-}
 
 main {
   height: 500px;
@@ -62,7 +48,6 @@ form {
   height: fit-content;
   border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
 }
 
 aside {
@@ -86,7 +71,13 @@ aside .lista {
   margin-left: 20px;
   margin-right: 20px;
 }
-
+@media (min-width: 520px) {
+  aside .lista {
+    overflow: auto;
+    max-height: 500px;
+    padding: 16px;
+  }
+}
 
 form h2 {
   font-size: 25px;
@@ -165,3 +156,18 @@ form button:hover {
   background-color: darkturquoise;
 }
 
+
+/* header {
+  background-color: #ffffff;
+  margin: 30px auto 10px;
+  width: 80vw;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: cursive;
+  text-align: center;
+} */

@@ -28,17 +28,6 @@ nav h1 {
   cursor: pointer;
 }
 
-header {
-  background-color: #ffffff;
-  margin: 30px auto 0px;
-  width: 80vw;
-  padding: 16px;
-  border-radius: 16px;
-}
-
-header h1 {
-  text-align: center;
-}
 
 main {
   display: flex;
@@ -76,7 +65,8 @@ aside .lista {
 @media (min-width: 520px) {
   aside .lista {
     overflow: auto;
-    max-height: 500px;
+    max-height: auto;
+    max-width: auto;
     padding: 16px;
   }
 }
