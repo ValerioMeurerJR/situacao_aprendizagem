@@ -30,7 +30,6 @@ document.getElementById("menu-funcionarios").addEventListener("click", async (ev
 
 async function listadeCarros() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
-    console.log(ultimos)
     const sideLista = document.getElementById("lista");
     sideLista.innerHTML = "";
     sideLista.innerHTML = `
@@ -86,19 +85,18 @@ async function listadeCarros() {
 }
 
 async function atualizarStatus(id: string) {
-    console.log(id);
     const veiculo = await (window as any).bancoAPI.veiculofindById(id);
-    console.log(veiculo);
-
+    
     if (veiculo.status == "Pronto para inspeçao") {
+        console.log(veiculo)
         await Swal.fire({
-            title: 'Atualizar Status para em Andamento',
+            title: 'Atualizar status para em andamento',
             showCancelButton: true,
             showConfirmButton: true
         }).then((result) => {
             if (result.isConfirmed) {
                 (window as any).bancoAPI.veiculoupdateStatusById(id, 'Inspeçao em andamento');
-                Swal.fire("Saved!", "", "success");
+                Swal.fire("Status Atualizado!", "", "success");
             } else if (result.isDenied) {
                 Swal.fire("Changes are not saved", "", "info");
             }
@@ -110,19 +108,21 @@ async function atualizarStatus(id: string) {
             showConfirmButton: true,
             cancelButtonText: "Reprovado",
             confirmButtonText: "Aprovado"
-        }).then((result) => {
+        }).then( async (result) => {
             if (result.isConfirmed) {
-                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Aprovado');
+                await (window as any).bancoAPI.veiculoupdateStatusById(id, 'Aprovado');                
+                Swal.fire("Status Atualizado!", "", "success");
             } else if (result.isDismissed) {
-                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Reprovado');
+                await (window as any).bancoAPI.veiculoupdateStatusById(id, 'Reprovado');
+                Swal.fire("Status Atualizado!", "", "success");
             }
         });
     }
     render()
 }
 
-function render() {
-    listadeCarros();
+async function render() {
+    await listadeCarros();
 }
 window.onload = () => {
     listadeCarros()
@@ -143,7 +143,7 @@ window.onload = () => {
 };
 
 function permissao() {
-    console.log(funcionario);
+    
     if ((funcionario.cargo == 'Inspetor') || (funcionario.cargo == 'Administrador')) {
         const buttons = document.getElementsByClassName("button") as HTMLCollectionOf<HTMLButtonElement>;
         for (let i = 0; i < buttons.length; i++) {

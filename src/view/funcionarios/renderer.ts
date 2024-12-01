@@ -91,7 +91,6 @@ async function listarFuncionarios() {
                 <th>Cargo</th>
                 <th>Criado em</th>
                 <th>Atualizado em</th>
-                <th>Ação</th>
             </tr>
         </thead>
         <tbody>
@@ -106,8 +105,7 @@ async function listarFuncionarios() {
         new Date(item.data_nascimento).toLocaleDateString('pt-BR'),
         item.cargo,
         new Date(item.criado_em).toLocaleString('pt-BR'),
-        new Date(item.atualizado_em).toLocaleString('pt-BR'),
-        `<button class='button' onclick='atualizarFuncionario("${item.id}")'>Editar</button>`
+        new Date(item.atualizado_em).toLocaleString('pt-BR')
     ]);
 
     const table = new DataTable('#example', {
@@ -122,8 +120,7 @@ async function listarFuncionarios() {
             { title: "Data Nascimento" },
             { title: "Cargo" },
             { title: "Criado em" },
-            { title: "Atualizado em" },
-            { title: "Ação" }
+            { title: "Atualizado em" }
         ]
     });
     table.on('draw', () => {
