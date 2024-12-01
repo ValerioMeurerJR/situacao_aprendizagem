@@ -47,20 +47,23 @@ main {
 .producao {
     background-color: aliceblue;
     border-radius: 16px;
-
+    padding: 20px;
 }
 
 .motor {
     background-color: aliceblue;
     border-radius: 16px;
+    padding: 20px;
 }
 
 .pneu {
     background-color: aliceblue;
     border-radius: 16px;
+    padding: 20px;
 }
 
 .chassi {
     background-color: aliceblue;
     border-radius: 16px;
+    padding: 20px;
 }
