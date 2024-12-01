@@ -5,9 +5,10 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    background: url(../../assets/logo_01.png);
+    background-color: #333333;
 }
+
 body div {
     display: flex;
     flex-direction: column;
@@ -23,11 +24,43 @@ nav.menu {
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     justify-content: space-evenly;
-  }
-  
-  nav h1 {
+}
+
+nav h1 {
     padding: 5px;
     padding: 2px;
     border-radius: 16px;
     cursor: pointer;
-  }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+.producao {
+    background-color: aliceblue;
+    border-radius: 16px;
+
+}
+
+.motor {
+    background-color: aliceblue;
+    border-radius: 16px;
+}
+
+.pneu {
+    background-color: aliceblue;
+    border-radius: 16px;
+}
+
+.chassi {
+    background-color: aliceblue;
+    border-radius: 16px;
+}
