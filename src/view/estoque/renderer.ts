@@ -92,9 +92,9 @@ async function listadeProdutos() {
         ]
     });
     table.on('draw', () => {
-        permissao();
+        //permissao();
     });
-    permissao();
+    //permissao();
 }
 async function RegistarEntrada(item: string) {
     const html = `
@@ -156,7 +156,7 @@ window.onload = () => {
         };
         funcionario = funcionariolocal;
     }
-    permissao()
+    //permissao()
 };
 
 function permissao() {

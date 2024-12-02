@@ -79,9 +79,9 @@ async function listadeCarros() {
         ]
     });
     table.on('draw', () => {
-        permissao();
+        //permissao();
     });
-    permissao();
+    //permissao();
 }
 
 async function atualizarStatus(id: string) {

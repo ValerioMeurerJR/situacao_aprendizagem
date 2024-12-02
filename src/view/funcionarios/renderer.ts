@@ -124,9 +124,9 @@ async function listarFuncionarios() {
         ]
     });
     table.on('draw', () => {
-        permissao();
+        //permissao();
     });
-    permissao();
+    //permissao();
 }
 
 
@@ -149,7 +149,7 @@ window.onload = () => {
         
         funcionario = funcionariolocal; 
     }
-    permissao()
+    //permissao()
 };
 
 function permissao() {

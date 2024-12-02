@@ -144,7 +144,7 @@ window.onload = () => {
         
         funcionario = funcionariolocal; 
     }
-    permissao()
+    //permissao()
 };
 
 function permissao() {
