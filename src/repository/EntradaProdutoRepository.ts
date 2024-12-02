@@ -10,7 +10,7 @@ export default class EntradaProdutoRepository {
             this.connection = new Client({
                 host: "localhost",
                 port: 5432,
-                database: 'FEHVAL',
+                database: 'fehval',
                 user: 'postgres',
                 password: 'senai'
             });
