@@ -41,3 +41,15 @@ CREATE TABLE entradaproduto (
 	estoque_id UUID NOT NULL
     FOREIGN KEY (estoque_id) REFERENCES estoque(id) ON DELETE CASCADE,
 );
+
+CREATE TABLE funcionarios (
+	id UUID PRIMARY KEY, 
+	nome VARCHAR(50) NOT NULL,
+	email VARCHAR(150) NOT NULL,
+	usuario VARCHAR(150) NOT NULL,
+	password_hash VARCHAR(200) NOT NULL,
+	cargo VARCHAR(100) NOT NULL,
+	data_nascimento DATE NOT NULL,
+	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
