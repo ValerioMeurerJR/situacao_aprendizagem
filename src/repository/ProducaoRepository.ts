@@ -8,7 +8,7 @@ export default class ProducaoRepository {
             this.connection = new Client({
                 host: "localhost",
                 port: 5432,
-                database: 'fabrica',
+                database: 'FEHVAL',
                 user: 'postgres',
                 password: 'senai'
             });
