@@ -42,15 +42,16 @@ document.getElementById("cadastrar").addEventListener("click", async (event: Mou
         fabricante: fabricante.value,
         tipo: tipo.value
     };
-    const result = await (window as any).bancoAPI.createEstoque(item);
+    await (window as any).bancoAPI.createEstoque(item);
     nome.value = '';
     quantidade.value = '';
     fabricante.value = '';
     tipo.value = '';
-    listadeProdutos()
+    await listadeProdutos();
 })
 
 async function listadeProdutos() {
+    console.log("Atualizado")
     const Produtos = await (window as any).bancoAPI.findAlllEstoque();
     const divLista = document.getElementById("lista");
     divLista.innerHTML = "";

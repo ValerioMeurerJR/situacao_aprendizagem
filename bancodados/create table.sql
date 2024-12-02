@@ -1,6 +1,3 @@
-
-
-
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE TABLE inspetores (
@@ -53,3 +50,34 @@ CREATE TABLE funcionarios (
 	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+-- Inserindo motores
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Ford Duratorq TDCi', 100, 'Ford', 'Motor');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Cummins ISF 2.8 Diesel', 50, 'Cummins', 'Motor');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Honda L15B7', 75, 'Honda', 'Motor');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Volkswagen EA888', 80, 'Volkswagen', 'Motor');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Toyota 2ZR-FE', 90, 'Toyota', 'Motor')
+
+-- Inserindo kits de pneus
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Pirelli', 200, 'Pirelli', 'Pneu');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Bridgestone', 180, 'Bridgestone', 'Pneu');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Continental', 150, 'Continental', 'Pneu');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Michelin', 220, 'Michelin', 'Pneu');
+
+-- Inserindo fabricantes de veículos
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Tesla', 50, 'Tesla', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('BMW', 60, 'BMW', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Volvo', 40, 'Volvo', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Jeep', 70, 'Jeep', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Chevrolet', 80, 'Chevrolet', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Toyota', 90, 'Toyota', 'Chassi');
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Mercedes-Benz', 55, 'Mercedes-Benz', 'Chassi');
+
+-- Inserindo usuarios
+INSERT INTO funcionarios (id, Nome, email, usuario, data_nascimento, password_hash, cargo, criado_em, atualizado_em) 
+values ('0bd59649-1d92-4406-9bd4-46ab47ba6329', 'Administrador', 'admin@gmail.com', 'admin', '2000-05-09', '$2b$12$rRm2hP5ke.Z0RMmYGoO3uuQyLnRUpVcMb6bNXax71pmbrYroDjqQS', 'Administrador', '2024-11-27', '2024-11-27' )
+
+
+-- Usuario: admin
+-- Senha: 1234
