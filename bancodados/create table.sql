@@ -1,10 +1,15 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
-CREATE TABLE inspetores (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+CREATE TABLE funcionarios (
+	id UUID PRIMARY KEY, 
 	nome VARCHAR(50) NOT NULL,
-	email VARCHAR(50) UNIQUE NOT NULL,
-	telefone VARCHAR(50) NOT NULL
+	email VARCHAR(150) NOT NULL,
+	usuario VARCHAR(150) NOT NULL,
+	password_hash VARCHAR(200) NOT NULL,
+	cargo VARCHAR(100) NOT NULL,
+	data_nascimento DATE NOT NULL,
+	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE estoque (
@@ -28,7 +33,7 @@ CREATE TABLE producao (
 	FOREIGN KEY (motor_id) REFERENCES estoque(id) ON DELETE CASCADE,
 	FOREIGN KEY (chassi_id) REFERENCES estoque(id) ON DELETE CASCADE,
 	FOREIGN KEY (kitPneu_id) REFERENCES estoque(id) ON DELETE CASCADE,
-	FOREIGN KEY (inspetores_id) REFERENCES inspetores(id) ON DELETE CASCADE
+	FOREIGN KEY (inspetores_id) REFERENCES funcionarios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE entradaproduto (
@@ -39,25 +44,13 @@ CREATE TABLE entradaproduto (
     FOREIGN KEY (estoque_id) REFERENCES estoque(id) ON DELETE CASCADE
 );
 
-CREATE TABLE funcionarios (
-	id UUID PRIMARY KEY, 
-	nome VARCHAR(50) NOT NULL,
-	email VARCHAR(150) NOT NULL,
-	usuario VARCHAR(150) NOT NULL,
-	password_hash VARCHAR(200) NOT NULL,
-	cargo VARCHAR(100) NOT NULL,
-	data_nascimento DATE NOT NULL,
-	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 
 -- Inserindo motores
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Ford Duratorq TDCi', 100, 'Ford', 'Motor');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Cummins ISF 2.8 Diesel', 50, 'Cummins', 'Motor');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Honda L15B7', 75, 'Honda', 'Motor');
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Volkswagen EA888', 80, 'Volkswagen', 'Motor');
-INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Toyota 2ZR-FE', 90, 'Toyota', 'Motor')
+INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Motor Toyota 2ZR-FE', 90, 'Toyota', 'Motor');
 
 -- Inserindo kits de pneus
 INSERT INTO estoque (nome, quantidade, fabricante, tipo) VALUES ('Kit 5 Pneu Pirelli', 200, 'Pirelli', 'Pneu');

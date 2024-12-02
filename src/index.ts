@@ -4,7 +4,6 @@ import EstoqueController from './controller/EstoqueController';
 import ProducaoController from './controller/ProducaoController';
 import EntradaProdutoController from './controller/EntradaProdutoController';
 import ScreenController from './controller/ScreenController';
-import InspetoresController from './controller/InspetoresController';
 import FuncionariosController from './controller/FuncionariosController';
 
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
@@ -12,7 +11,6 @@ declare const LOGIN_WEBPACK_ENTRY: string;
 declare const INDEX_WEBPACK_ENTRY: string;
 declare const PRODUCAO_WEBPACK_ENTRY: string;
 declare const ESTOQUE_WEBPACK_ENTRY: string;
-declare const INSPECAO_WEBPACK_ENTRY: string;
 
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -39,7 +37,6 @@ app.on('ready', () => {
   new ProducaoController();
   new EntradaProdutoController();
   new ScreenController(mainWindow);
-  new InspetoresController()
   new FuncionariosController()
 });
 

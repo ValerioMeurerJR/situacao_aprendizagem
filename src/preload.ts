@@ -13,7 +13,7 @@ contextBridge.exposeInMainWorld('bancoAPI', {
     findAllInspetor: async () => await ipcRenderer.invoke('findAllInspetor'),
     createInspetor: async (item: any) => await ipcRenderer.invoke('createInspetor', item),
     veiculofindById: async (id: string) => await ipcRenderer.invoke('veiculofindById', id),
-    veiculoupdateStatusById: async (id: string, novoStatus: string) => await ipcRenderer.invoke('veiculoupdateStatusById', id, novoStatus),
+    veiculoupdateStatusById: async (id: string, novoStatus: string, funcionario?: string) => await ipcRenderer.invoke('veiculoupdateStatusById', id, novoStatus, funcionario),
     PodDataEstoque: async (inicio: string, fim: string) => await ipcRenderer.invoke('PodDataEstoque', inicio, fim)
 })
 

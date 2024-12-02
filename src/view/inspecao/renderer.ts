@@ -30,6 +30,7 @@ document.getElementById("menu-funcionarios").addEventListener("click", async (ev
 
 async function listadeCarros() {
     const ultimos = await (window as any).bancoAPI.findUltimosCadastrado();
+    console.log(ultimos)
     const sideLista = document.getElementById("lista");
     sideLista.innerHTML = "";
     sideLista.innerHTML = `
@@ -43,6 +44,7 @@ async function listadeCarros() {
                 <th>Kit Pneu</th>
                 <th>Status</th>
                 <th>Data Fabricação</th>
+                <th>Inspetor</th>
                 <th>Ação</th>
             </tr>
         </thead>
@@ -59,6 +61,7 @@ async function listadeCarros() {
         item.kitpneu,
         item.status,
         new Date(item.data_fabricacao).toLocaleString('pt-BR'),
+        item.inspetor,
         `<button class="button" onclick='atualizarStatus("${item.id}")'>Atualizar Status</button>`
     ]);
 
@@ -75,6 +78,7 @@ async function listadeCarros() {
             { title: "Kit Pneu" },
             { title: "Status" },
             { title: "Data Fabricação" },
+            { title: "Inspetor" },
             { title: "Ação" }
         ]
     });
@@ -95,7 +99,7 @@ async function atualizarStatus(id: string) {
             showConfirmButton: true
         }).then((result) => {
             if (result.isConfirmed) {
-                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Inspeçao em andamento');
+                (window as any).bancoAPI.veiculoupdateStatusById(id, 'Inspeçao em andamento', funcionario.id);
                 Swal.fire("Status Atualizado!", "", "success");
             } else if (result.isDenied) {
                 Swal.fire("Changes are not saved", "", "info");

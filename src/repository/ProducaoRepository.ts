@@ -64,12 +64,14 @@ export default class ProducaoRepository {
                 c.nome as chassi,
                 k.nome as KitPneu,
                 p.status,
-                p.data_fabricacao
+                p.data_fabricacao,
+                e.nome as inspetor
                 FROM 
                 producao as p
                 INNER JOIN estoque m ON p.motor_id = m.id
                 INNER JOIN estoque c ON p.chassi_id = c.id
                 INNER JOIN estoque k ON p.kitPneu_id = k.id
+                INNER JOIN funcionarios e ON p.inspetores_id = e.id
                 ORDER BY data_fabricacao DESC`;
             const result = await this.connection.query(sql);
             return result.rows;
@@ -81,6 +83,7 @@ export default class ProducaoRepository {
             this.connection = null;
         }
     }
+    
 
     async findByRenavam(renavam: string) {
         try {
@@ -110,11 +113,13 @@ export default class ProducaoRepository {
             this.connection = null;
         }
     }
-    async veiculoupdateStatusById(id: string, novoStatus: string) {
+    async veiculoupdateStatusById(id: string, novoStatus: string, funcionario?: string) {
         try {
             this.connection.connect();
-            const sql = "UPDATE producao SET status = $1 WHERE id = $2";
-            const result = await this.connection.query(sql, [novoStatus, id]);
+            var idFuncionario = funcionario === undefined ? 'null' : funcionario;
+            console.log(idFuncionario)
+            const sql = "UPDATE producao SET status = $1, inspetores_id = $2 WHERE id = $3";
+            const result = await this.connection.query(sql, [novoStatus, idFuncionario, id]);
             return result.rows[0];
         } catch (error) {
             console.log(error)

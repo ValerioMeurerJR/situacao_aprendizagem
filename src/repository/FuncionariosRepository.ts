@@ -13,15 +13,6 @@ export default class FuncionariosRepository {
                 password: 'senai'
             });
         }	
-        // id UUID PRIMARY  KEY,
-        // nome VARCHAR(100) NOT NULL,
-        // email VARCHAR(100) UNIQUE NOT NULL,
-        // usuario VARCHAR(32) UNIQUE NOT NULL,
-        // data_nascimento DATE NOT NULL,
-        // password_hash VARCHAR(200) NOT NULL,
-        // cargo VARCHAR(100) NOT NULL,
-        // criado_em TIMESTAMP NOT NULL,
-        //  atualizado_em TIMESTAMP NOT NULL	
     }
     async save(funcionario: Funcionario) {
         try {
