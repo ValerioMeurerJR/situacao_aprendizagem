@@ -38,8 +38,8 @@ CREATE TABLE entradaproduto (
     id UUID PRIMARY KEY,
 	numero_nota INTEGER NOT NULL,
 	quantidade INTEGER NOT NULL,
-	estoque_id UUID NOT NULL
-    FOREIGN KEY (estoque_id) REFERENCES estoque(id) ON DELETE CASCADE,
+	estoque_id UUID NOT NULL,
+    FOREIGN KEY (estoque_id) REFERENCES estoque(id) ON DELETE CASCADE
 );
 
 CREATE TABLE funcionarios (
@@ -50,6 +50,6 @@ CREATE TABLE funcionarios (
 	password_hash VARCHAR(200) NOT NULL,
 	cargo VARCHAR(100) NOT NULL,
 	data_nascimento DATE NOT NULL,
-	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
