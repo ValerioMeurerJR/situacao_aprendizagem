@@ -6,11 +6,11 @@ export default class FuncionariosRepository {
     constructor() {
         if (!this.connection) {
             this.connection = new Client({
-                host: "valeriomeurer.ddns.net",
-                port: 8086,
+                host: "localhost",
+                port: 5432,
                 database: 'fabrica',
                 user: 'postgres',
-                password: '4qcMR484g9AA'
+                password: 'senai'
             });
         }	
         // id UUID PRIMARY  KEY,
