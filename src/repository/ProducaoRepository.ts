@@ -8,7 +8,7 @@ export default class ProducaoRepository {
             this.connection = new Client({
                 host: "localhost",
                 port: 5432,
-                database: 'fehval',
+                database: 'fabrica',
                 user: 'postgres',
                 password: 'senai'
             });
@@ -71,7 +71,7 @@ export default class ProducaoRepository {
                 INNER JOIN estoque m ON p.motor_id = m.id
                 INNER JOIN estoque c ON p.chassi_id = c.id
                 INNER JOIN estoque k ON p.kitPneu_id = k.id
-                INNER JOIN funcionarios e ON p.inspetores_id = e.id
+                LEFT JOIN funcionarios e ON p.inspetores_id = e.id
                 ORDER BY data_fabricacao DESC`;
             const result = await this.connection.query(sql);
             return result.rows;

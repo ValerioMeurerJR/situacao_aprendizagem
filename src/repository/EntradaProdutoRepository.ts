@@ -1,6 +1,5 @@
 import { Client } from "pg";
 import EntradaProduto from "src/entity/EntradaProduto";
-import Estoque from "src/entity/Estoque";
 
 export default class EntradaProdutoRepository {
     private connection: Client
@@ -10,7 +9,7 @@ export default class EntradaProdutoRepository {
             this.connection = new Client({
                 host: "localhost",
                 port: 5432,
-                database: 'fehval',
+                database: 'fabrica',
                 user: 'postgres',
                 password: 'senai'
             });

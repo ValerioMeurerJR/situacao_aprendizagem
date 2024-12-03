@@ -8,7 +8,7 @@ export default class FuncionariosRepository {
             this.connection = new Client({
                 host: "localhost",
                 port: 5432,
-                database: 'fehval',
+                database: 'fabrica',
                 user: 'postgres',
                 password: 'senai'
             });
